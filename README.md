@@ -1,7 +1,7 @@
 # Final Project PBKK A
 
 ## Nama aplikasi:
-**PiknikYuk!
+**PiknikYuk!**
 
 ## Anggota kelompok:
   - Raden Teja Kusuma (05111640000012)
