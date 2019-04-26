@@ -94,6 +94,13 @@ create table USERS
    primary key (USER_ID)
 );
 
+/*==============================================================*/
+/* Dumping data for table `users`*/
+/*==============================================================*/
+
+INSERT INTO `users` (`USER_ID`, `DISCOUNT_ID`, `USERNAME`, `EMAIL`, `PASSWORD`, `ROLE`) VALUES
+(1, NULL, 'admin', 'admin@gmail.com', 'adminadmin', '1');
+
 alter table OPENING_HOURS add constraint FK_IN_OPENINGHOURS foreign key (ID_TOURLOCATION)
       references TOUR_LOCATIONS (ID_TOURLOCATION) on delete restrict on update restrict;
 
