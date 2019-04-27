@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Selamat Datang Piknikers !!</title>
 </head>
 <body>
-	<h1>HALOO</h1>
+	<h1>LIST OF SERVICES:</h1>
+	<ul>
+		<li><a href="user/list">User lists</a></li>
+	</ul>
 </body>
 </html>
