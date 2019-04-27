@@ -39,7 +39,7 @@ create table OPENING_HOURS
    day                  numeric(1,0) not null,
    open_time            time not null,
    close_time           time not null,
-   primary key (id)
+   primary key (id, day)
 );
 
 /*==============================================================*/
