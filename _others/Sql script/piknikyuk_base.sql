@@ -21,12 +21,12 @@ drop table if exists USERS;
 /*==============================================================*/
 create table DISCOUNTS
 (
-   DISCOUNT_ID          int not null,
-   DISCOUNT_DESCRIPTION varchar(50) not null,
-   START_TIME           date not null,
-   END_TIME             date not null,
-   DISCOUNT_VALUE       decimal(5,2) not null,
-   primary key (DISCOUNT_ID)
+   id          			int not null,
+   description 			varchar(50) not null,
+   start_time           date not null,
+   end_time             date not null,
+   discount_value       decimal(5,2) not null,
+   primary key (id)
 );
 
 /*==============================================================*/
@@ -34,12 +34,12 @@ create table DISCOUNTS
 /*==============================================================*/
 create table OPENING_HOURS
 (
-   ID_OPENINGHOURS      int not null,
-   ID_TOURLOCATION      int,
-   DAY                  numeric(1,0) not null,
-   OPEN_TIME            time not null,
-   CLOSE_TIME           time not null,
-   primary key (ID_OPENINGHOURS)
+   id 				    int not null,
+   tour_locations_id    int,
+   day                  numeric(1,0) not null,
+   open_time            time not null,
+   close_time           time not null,
+   primary key (id)
 );
 
 /*==============================================================*/
@@ -47,10 +47,10 @@ create table OPENING_HOURS
 /*==============================================================*/
 create table ORDERS
 (
-   USER_ID              int not null,
-   ID_TOURLOCATION      int not null,
-   ORDER_TIME           timestamp,
-   primary key (USER_ID, ID_TOURLOCATION)
+   users_id              int not null,
+   tour_locations_id     int not null,
+   order_time            timestamp,
+   primary key (users_id, tour_locations_id)
 );
 
 /*==============================================================*/
@@ -58,11 +58,11 @@ create table ORDERS
 /*==============================================================*/
 create table PRICINGS
 (
-   ID_PRICINGS          int not null,
-   ID_TOURLOCATION      int,
-   WEEKDAY_PRICE        decimal(10,2) not null,
-   WEEKEND_PRICE        decimal(10,2) not null,
-   primary key (ID_PRICINGS)
+   id                   int not null,
+   tour_locations_id    int,
+   weekday_price        decimal(10,2) not null,
+   weekend_price        decimal(10,2) not null,
+   primary key (id)
 );
 
 /*==============================================================*/
@@ -70,14 +70,14 @@ create table PRICINGS
 /*==============================================================*/
 create table TOUR_LOCATIONS
 (
-   ID_TOURLOCATION      int not null,
-   ID_OPENINGHOURS      int not null,
-   ID_PRICINGS          int not null,
-   NAME                 varchar(50) not null,
-   TOUR_LOCATION_DESCRIPTION varchar(200) not null,
-   LOCATION             varchar(50) not null,
-   CAPACITY             smallint not null,
-   primary key (ID_TOURLOCATION)
+   id 			        int not null,
+   opening_hours_id     int not null,
+   pricings_id          int not null,
+   name                 varchar(50) not null,
+   description		    varchar(200) not null,
+   location             varchar(50) not null,
+   capacity             smallint not null,
+   primary key (id)
 );
 
 /*==============================================================*/
@@ -85,40 +85,33 @@ create table TOUR_LOCATIONS
 /*==============================================================*/
 create table USERS
 (
-   USER_ID              int not null,
-   DISCOUNT_ID          int,
-   USERNAME             varchar(50) not null,
-   EMAIL                varchar(50) not null,
-   PASSWORD             varchar(60) not null,
-   ROLE                 numeric(1,0) not null,
-   primary key (USER_ID)
+   id         	        int not null,
+   discounts_id         int,
+   username             varchar(50) not null,
+   email                varchar(50) not null,
+   password             char(64) not null,
+   role                 numeric(1,0) not null,
+   primary key (id)
 );
 
-/*==============================================================*/
-/* Dumping data for table `users`*/
-/*==============================================================*/
+alter table OPENING_HOURS add constraint FK_IN_OPENINGHOURS foreign key (tour_locations_id)
+      references TOUR_LOCATIONS (id) on delete restrict on update restrict;
 
-INSERT INTO `users` (`USER_ID`, `DISCOUNT_ID`, `USERNAME`, `EMAIL`, `PASSWORD`, `ROLE`) VALUES
-(1, NULL, 'admin', 'admin@gmail.com', 'adminadmin', '1');
+alter table ORDERS add constraint FK_ORDERS foreign key (users_id)
+      references USERS (id) on delete restrict on update restrict;
 
-alter table OPENING_HOURS add constraint FK_IN_OPENINGHOURS foreign key (ID_TOURLOCATION)
-      references TOUR_LOCATIONS (ID_TOURLOCATION) on delete restrict on update restrict;
+alter table ORDERS add constraint FK_ORDERS2 foreign key (tour_locations_id)
+      references TOUR_LOCATIONS (id) on delete restrict on update restrict;
 
-alter table ORDERS add constraint FK_ORDERS foreign key (USER_ID)
-      references USERS (USER_ID) on delete restrict on update restrict;
+alter table PRICINGS add constraint FK_IN_PRICINGS foreign key (tour_locations_id)
+      references TOUR_LOCATIONS (id) on delete restrict on update restrict;
 
-alter table ORDERS add constraint FK_ORDERS2 foreign key (ID_TOURLOCATION)
-      references TOUR_LOCATIONS (ID_TOURLOCATION) on delete restrict on update restrict;
+alter table TOUR_LOCATIONS add constraint FK_IN_OPENINGHOURS2 foreign key (opening_hours_id)
+      references OPENING_HOURS (id) on delete restrict on update restrict;
 
-alter table PRICINGS add constraint FK_IN_PRICINGS foreign key (ID_TOURLOCATION)
-      references TOUR_LOCATIONS (ID_TOURLOCATION) on delete restrict on update restrict;
+alter table TOUR_LOCATIONS add constraint FK_IN_PRICINGS2 foreign key (pricings_id)
+      references PRICINGS (id) on delete restrict on update restrict;
 
-alter table TOUR_LOCATIONS add constraint FK_IN_OPENINGHOURS2 foreign key (ID_OPENINGHOURS)
-      references OPENING_HOURS (ID_OPENINGHOURS) on delete restrict on update restrict;
-
-alter table TOUR_LOCATIONS add constraint FK_IN_PRICINGS2 foreign key (ID_PRICINGS)
-      references PRICINGS (ID_PRICINGS) on delete restrict on update restrict;
-
-alter table USERS add constraint FK_USE foreign key (DISCOUNT_ID)
-      references DISCOUNTS (DISCOUNT_ID) on delete restrict on update restrict;
+alter table USERS add constraint FK_USE foreign key (discounts_id)
+      references DISCOUNTS (id) on delete restrict on update restrict;
 
