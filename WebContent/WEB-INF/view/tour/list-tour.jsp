@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="center-items">
-	    <h2>User List</h2>
+	    <h2>Daftar Tempat Wisata</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
 	    	<button class="btn btn-primary"><a href="addUserForm">Add User</a></button>
 	    </div>
