@@ -28,6 +28,7 @@ public class UserController {
 		// add users to theModel
 		theModel.addAttribute("users", theUsers);
 		
+		// load jsp page
 		return "user/list-user";
 		
 	}
