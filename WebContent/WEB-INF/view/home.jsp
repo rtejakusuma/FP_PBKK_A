@@ -10,6 +10,7 @@
 	<h1>PILIHAN LAYANAN:</h1>
 	<ul>
 		<li><a href="user/list">Daftar Pengguna</a></li>
+		<li><a href="tour/list">Daftar Tempat Wisata</a></li>
 	</ul>
 </body>
 </html>

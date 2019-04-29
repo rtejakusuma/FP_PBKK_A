@@ -8,30 +8,29 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mangujang.piknikYuk.model.User;
+import com.mangujang.piknikYuk.model.Tour;
 
 @Repository
-public class UserDAOImpl implements UserDAO {
+public class TourDAOImpl implements TourDAO {
 	
 	// inject session factory
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<User> getUsers() {
+	public List<Tour> getTours() {
 		
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// create a query
-		Query<User> theQuery = 
-				currentSession.createQuery("from User", User.class);
+		Query<Tour> selectAll  =
+				currentSession.createQuery("from Tour", Tour.class);
 		
 		// execute query & get result list
-		List<User> users = theQuery.getResultList();
+		List<Tour> tours = selectAll.getResultList();
 		
-		// return the results
-		return users;
+		return tours;
 	}
 
 }
