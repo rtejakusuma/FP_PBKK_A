@@ -18,4 +18,16 @@ public class HomeController {
 		
 		return page;
 	}
+	
+	@RequestMapping("/login")
+	public String loginPage() {
+		String page = "user/login-users";
+		return page;
+	}
+	
+	@RequestMapping("/register")
+	public String regisPage() {
+		String page = "user/register-users";
+		return page;
+	}
 }
