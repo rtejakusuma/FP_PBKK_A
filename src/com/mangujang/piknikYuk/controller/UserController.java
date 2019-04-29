@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mangujang.piknikYuk.model.User;
@@ -34,8 +36,18 @@ public class UserController {
 	}
 	
 	@GetMapping("/addUserForm")
-	public String addUser() {
+	public String addUser(Model theModel) {
 		
+		//create model attribute to bind form data
+		User theUser = new User();
+		theModel.addAttribute("user", theUser);
 		return "user/user-form";
+	}
+	
+	@PostMapping("/saveUser")
+	public String saveUser(@ModelAttribute("user") User theUser) {
+		//save the customer using our service
+		userService.saveUser(theUser);
+		return "redirect:/user/list";
 	}
 }

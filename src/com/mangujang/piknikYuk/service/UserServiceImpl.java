@@ -23,4 +23,12 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getUsers();		
 	}
 
+
+	@Override
+	@Transactional
+	public void saveUser(User theUser) {
+		// TODO Auto-generated method stub
+		userDAO.saveUser(theUser);
+	}
+
 }
