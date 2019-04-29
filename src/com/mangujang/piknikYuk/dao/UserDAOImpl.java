@@ -19,7 +19,6 @@ public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	@Transactional
 	public List<User> getUsers() {
 		
 		// get current hibernate session
