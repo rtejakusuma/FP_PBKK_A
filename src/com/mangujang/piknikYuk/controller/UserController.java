@@ -36,6 +36,6 @@ public class UserController {
 	@GetMapping("/addUserForm")
 	public String addUser() {
 		
-		return "user/user-form";
+		return "user/register-users";
 	}
 }
