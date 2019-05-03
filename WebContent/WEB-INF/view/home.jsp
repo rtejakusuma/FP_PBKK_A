@@ -53,7 +53,7 @@
   
   <div class="menulist">
          <ul>
-             <li><a href="">Obyek Wisata</a></li>
+             <li><a href="${pageContext.request.contextPath}/tour/list">Obyek Wisata</a></li>
              <li><a class="js-scroll-trigger" href="#about">About</a></li>
              <li><a class="js-scroll-trigger" href="#contact">Contact</a></li>
          </ul>
@@ -68,7 +68,7 @@
 			<a href="Login/Login_v16/login.html" class="myButton">Login</a>
          </div>
 		 <div class="atur2">
-			<a href="Register/Login_v16/register.html" class="myButton">Register</a>
+			<a href="${pageContext.request.contextPath}/user/addUserForm" class="myButton">Register</a>
          </div>
         <!--</div>
       </div>
