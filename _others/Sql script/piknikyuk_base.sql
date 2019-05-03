@@ -22,7 +22,7 @@ drop table if exists TOUR_LOCATIONS;
 /*==============================================================*/
 create table DISCOUNTS
 (
-   id          			int not null,
+   id          			int not null auto_increment,
    description 			varchar(50) not null,
    discount_value       decimal(5,2) not null,
    start_time           date not null,
@@ -58,7 +58,7 @@ create table ORDERS
 /*==============================================================*/
 create table TOUR_LOCATIONS
 (
-   id 			        int not null,
+   id 			        int not null auto_increment,
    name                 varchar(50) not null,
    description		    varchar(200) not null,
    location             varchar(50) not null,
@@ -73,7 +73,7 @@ create table TOUR_LOCATIONS
 /*==============================================================*/
 create table USERS
 (
-   id         	        int not null,
+   id         	        int not null auto_increment,
    discount_id          int,
    username             varchar(50) not null,
    email                varchar(50) not null,

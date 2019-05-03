@@ -22,4 +22,12 @@ public class DiscountServiceImpl implements DiscountService {
 		return discountDAO.getDiscounts();
 	}
 
+	@Override
+	@Transactional
+	public void saveDiscount(Discounts theDiscount) {
+		discountDAO.saveDiscount(theDiscount);
+		
+	}
+	
+
 }

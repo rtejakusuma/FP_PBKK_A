@@ -52,12 +52,13 @@
   </nav>-->
   
   <div class="menulist">
-         <ul>
-             <li><a href="${pageContext.request.contextPath}/tour/list">Obyek Wisata</a></li>
-             <li><a class="js-scroll-trigger" href="#about">About</a></li>
-             <li><a class="js-scroll-trigger" href="#contact">Contact</a></li>
-         </ul>
-       </div>
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/tour/list">Obyek Wisata</a></li>
+            <li><a href="${pageContext.request.contextPath}/discount/list">Promo</a></li>
+            <li><a class="js-scroll-trigger" href="#about">About</a></li>
+            <li><a class="js-scroll-trigger" href="#contact">Contact</a></li>
+        </ul>
+  </div>
 
   <!-- Masthead -->
   <header class="masthead">
@@ -65,7 +66,7 @@
       <div class="row h-100 align-items-center justify-content-center text-center">
 		<div class="col-lg-8 align-self-baseline">-->
 		 <div class="atur1">
-			<a href="Login/Login_v16/login.html" class="myButton">Login</a>
+			<a href="${pageContext.request.contextPath}/login" class="myButton">Login</a>
          </div>
 		 <div class="atur2">
 			<a href="${pageContext.request.contextPath}/user/addUserForm" class="myButton">Register</a>

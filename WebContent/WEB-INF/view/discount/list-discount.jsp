@@ -6,24 +6,24 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Discount List</title>
+	<title>Daftar Promo</title>
 	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<div class="center-items">
-	    <h2>Discount List</h2>
+	    <h2>Daftar Promo</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    	<button class="btn btn-primary"><a href="addUserForm">Add User</a></button>
+	    	<button class="btn btn-primary"><a href="addDiscountForm">Tambahkan Promo</a></button>
 	    </div>
 	    <table class="table table-bordered table-dark">
 			<thead>
 				<tr>
 					<th scope="col">#</th>
-					<th scope="col">Description</th>
-					<th scope="col">Discount_Value</th>
-					<th scope="col">Start_Time</th>
-					<th scope="col">End_Time</th>				
+					<th scope="col">Deskripsi</th>
+					<th scope="col">Nilai diskon</th>
+					<th scope="col">Waktu mulai</th>
+					<th scope="col">Waktu berakhir</th>				
 				</tr>
 			</thead>
 			<c:forEach var="discount" items="${discounts}">
@@ -38,7 +38,9 @@
 				</tbody>
 			</c:forEach>			
 	    </table>
-	    <button class="btn btn-primary"><a href="../home">Back home</a></button>
+	    <div class="col-3-md" style="float: right; margin: 16px 0;">
+	    	<button class="btn btn-primary"><a href="../home">Beranda</a></button>
+	    </div>	    	
     </div>	
 </body>
 </html>

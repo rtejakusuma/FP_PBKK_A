@@ -41,7 +41,7 @@ public class UserController {
 		//create model attribute to bind form data
 		User theUser = new User();
 		theModel.addAttribute("user", theUser);
-		return "user/user-form";
+		return "user/register-user";
 	}
 	
 	@PostMapping("/saveUser")

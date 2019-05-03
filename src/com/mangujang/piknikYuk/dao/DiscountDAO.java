@@ -6,4 +6,6 @@ import com.mangujang.piknikYuk.model.Discounts;
 
 public interface DiscountDAO {
 	public List<Discounts> getDiscounts();
+
+	public void saveDiscount(Discounts theDiscount);
 }
