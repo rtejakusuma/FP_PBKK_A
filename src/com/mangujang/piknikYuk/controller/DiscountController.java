@@ -59,14 +59,6 @@ public class DiscountController {
 		return "discount/form-discount";
 	}
 	
-//	@PostMapping("/saveDiscount")
-//	public String saveDiscount(
-//			@ModelAttribute("discount") Discounts theDiscount,
-//			@ModelAttribute("date") Date date
-//			) {
-//		return "redirect:/discount/list";
-//	}
-	
 	@PostMapping("/saveDiscount")
 	public String saveDiscount(
 			@RequestParam("description") String description,
