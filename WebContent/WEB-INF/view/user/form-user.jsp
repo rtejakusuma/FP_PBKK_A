@@ -39,7 +39,7 @@
 	    		</table>
 	    	</form:form>
 	    </div>
-	    <button class="btn btn-primary"><a href="../home">Back home</a></button>
+	    <button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Back home</a></button>
     </div>	
 </body>
 </html>

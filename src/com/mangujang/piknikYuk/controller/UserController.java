@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mangujang.piknikYuk.model.User;
 import com.mangujang.piknikYuk.service.UserService;
@@ -42,15 +43,30 @@ public class UserController {
 	@GetMapping("/addUserForm")
 	public String addUser(Model theModel) {
 		
-		//create model attribute to bind form data
+		// create model attribute to bind form data
 		User theUser = new User();
 		theModel.addAttribute("user", theUser);
 		return "user/register-user";
 	}
 	
+	@GetMapping("/updateUserForm")
+	public String updateUser(
+			@RequestParam("userId") int theId, 
+			Model theModel
+			) {		
+		// get user data from db
+		User theUser = userService.getUser(theId);
+		
+		// set user data to model object
+		theModel.addAttribute("user", theUser);
+		
+		// send to form page		
+		return "user/update-user";
+	}
+	
 	@PostMapping("/saveUser")
 	public String saveUser(@ModelAttribute("user") User theUser) {
-
+		
 		// password hashing
 		MessageDigest digest;
 		try {
@@ -78,8 +94,9 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		
 		//save the customer using our service
+		System.out.println(theUser.getId());
 		userService.saveUser(theUser);
 		return "redirect:/user/list";
 	}

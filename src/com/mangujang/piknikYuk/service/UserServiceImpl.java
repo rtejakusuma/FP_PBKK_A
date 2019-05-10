@@ -16,19 +16,23 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDAO;
 	
-	
 	@Override
 	@Transactional
 	public List<User> getUsers() {		
 		return userDAO.getUsers();		
 	}
 
-
 	@Override
 	@Transactional
 	public void saveUser(User theUser) {
 		// TODO Auto-generated method stub
 		userDAO.saveUser(theUser);
+	}
+
+	@Override
+	@Transactional
+	public User getUser(int theId) {		
+		return userDAO.getUser(theId);
 	}
 
 }
