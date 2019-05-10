@@ -25,13 +25,9 @@
 				);
 			</script>
 		</c:if>
-	    <h2>User List
-	    <c:if test="${delete_flag == 1 }">
-			${delete_flag}
-		</c:if>
-	    </h2>
+	    <h2>Daftar Pengguna</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    	<button class="btn btn-primary"><a href="addUserForm">Add User</a></button>
+	    	<button class="btn btn-primary"><a href="addUserForm">Tambahkan Pengguna</a></button>
 	    </div>
 	    <table class="table table-bordered table-dark">
 			<thead>
@@ -61,14 +57,14 @@
 							<c:otherwise><td style="width: 15%">User</td></c:otherwise>
 						</c:choose>
 						<td style="width: 15%">
-							<a title='Update User' href="${updateLink}"><i class="fas fa-edit"></i></a>					
-							<a title='Delete User' onclick="confirm('${user.id}')"><i class="fas fa-trash"></i></a>
+							<a title='Update User' href="${updateLink}"><li class="fas fa-edit"></li></a>					
+							<a title='Delete User' onclick="confirm('${user.id}')"><li class="fas fa-trash"></li></a>
 						</td>						
 					</tr>
 				</tbody>
 			</c:forEach>			
 	    </table>
-	    <button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Back home</a></button>
+	    <button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Menuju Halaman Awal</a></button>
     </div>	
 </body>
 <script>
@@ -85,9 +81,11 @@
 			allowOutsideClick: false,
             allowEscapeKey: false,
             allowEnterKey: false
-		}).then(function(){
-	  		window.location.href = "${deleteLink}?userId="+id; 
-	  	});
+		}).then((result) => {
+			if(result.value) {
+		  		window.location.href = "${deleteLink}?userId="+id; 		
+			}
+		});
 	}
 </script>
 </html>
