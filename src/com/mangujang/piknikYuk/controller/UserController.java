@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mangujang.piknikYuk.model.User;
 import com.mangujang.piknikYuk.service.UserService;
@@ -98,6 +99,21 @@ public class UserController {
 		//save the customer using our service
 		System.out.println(theUser.getId());
 		userService.saveUser(theUser);
+		return "redirect:/user/list";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteUser(
+			@RequestParam("userId") int theId,
+			RedirectAttributes theModel
+			) {
+		// delete user
+		userService.deleteUser(theId);
+		
+		// flag?
+		// set user data to model object
+		theModel.addFlashAttribute("delete_flag", 1);
+		
 		return "redirect:/user/list";
 	}
 }
