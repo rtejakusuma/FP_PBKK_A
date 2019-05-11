@@ -58,7 +58,7 @@
 						</c:choose>
 						<td style="width: 15%">
 							<a title='Update User' href="${updateLink}"><li class="fas fa-edit"></li></a>					
-							<a title='Delete User' onclick="confirm('${user.id}')"><li class="fas fa-trash"></li></a>
+							<a title='Delete User' href="#" onclick="confirm('${user.id}')"><li class="fas fa-trash"></li></a>
 						</td>						
 					</tr>
 				</tbody>

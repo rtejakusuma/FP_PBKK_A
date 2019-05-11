@@ -24,6 +24,7 @@ create table DISCOUNTS
 (
    id          			int not null auto_increment,
    description 			varchar(50) not null,
+   code                 varchar(12) not null,
    discount_value       decimal(5,2) not null,
    start_time           date not null,
    end_time             date not null,
@@ -115,10 +116,11 @@ INSERT INTO `tour_locations` (`id`, `name`, `description`, `location`, `capacity
 /*==============================================================*/
 /* Dumping data for table `discounts`*/
 /*==============================================================*/
-INSERT INTO `discounts` (`id`, `description`, `discount_value`, `start_time`, `end_time`) VALUES
-(1, 'PiknikYuk Promo #1', '50', '2019-04-01', '2019-04-30'),
-(2, 'PiknikYuk Promo #2', '15', '2019-03-01', '2019-03-29'),
-(3, 'PiknikYuk Promo #3', '20', '2019-05-01', '2019-06-01');
+INSERT INTO `discounts` (`description`, `code`, `discount_value`, `start_time`, `end_time`) VALUES
+('PiknikYuk Pengguna Baru', `PYPROMOBARU`, '50', '2019-03-01', '2019-05-31'),
+('PiknikYuk Promo #1', `PYPROMO1`, '50', '2019-03-01', '2019-03-31'),
+('PiknikYuk Promo #2', `PYPROMO2`, '15', '2019-04-01', '2019-04-30'),
+('PiknikYuk Promo #3', `PYPROMO3`, '20', '2019-05-01', '2019-05-31');
 
 
 /*==============================================================*/

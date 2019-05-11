@@ -22,8 +22,9 @@ drop table if exists TOUR_LOCATIONS;
 /*==============================================================*/
 create table DISCOUNTS
 (
-   id          			int not null auto_increment,
-   description 			varchar(50) not null,
+   id                   int not null auto_increment,
+   description          varchar(50) not null,
+   code                 varchar(12) not null,
    discount_value       decimal(5,2) not null,
    start_time           date not null,
    end_time             date not null,
