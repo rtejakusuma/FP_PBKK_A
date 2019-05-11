@@ -21,13 +21,13 @@ public class HomeController {
 	
 	@RequestMapping("/login")
 	public String loginPage() {
-		String page = "user/login-users";
+		String page = "user/login-user";
 		return page;
 	}
 	
 	@RequestMapping("/register")
 	public String regisPage() {
-		String page = "user/register-users";
+		String page = "user/register-user";
 		return page;
 	}
 }

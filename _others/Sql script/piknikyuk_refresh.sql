@@ -22,8 +22,8 @@ drop table if exists TOUR_LOCATIONS;
 /*==============================================================*/
 create table DISCOUNTS
 (
-   id                   int not null auto_increment,
-   description          varchar(50) not null,
+   id          			int not null auto_increment,
+   description 			varchar(50) not null,
    code                 varchar(12) not null,
    discount_value       decimal(5,2) not null,
    start_time           date not null,
@@ -94,4 +94,60 @@ alter table ORDERS add constraint FK_ORDERS2 foreign key (tour_location_id)
 
 alter table USERS add constraint FK_DISCOUNTS foreign key (discount_id)
       references DISCOUNTS (id) on delete restrict on update cascade;
+
+/*==============================================================*/
+/* Dumping data for table `users`*/
+/*==============================================================*/
+
+INSERT INTO `users` (`id`, `discount_id`, `username`, `email`, `password`, `role`) VALUES
+(1, NULL, 'admin', 'admin@gmail.com', 'd82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892', '1'),
+(2, NULL, 'user1', 'user1@gmail.com', 'e606e38b0d8c19b24cf0ee3808183162ea7cd63ff7912dbb22b5e803286b4446', '0');
+
+
+/*==============================================================*/
+/* Dumping data for table `tour_locations`*/
+/*==============================================================*/
+INSERT INTO `tour_locations` (`id`, `name`, `description`, `location`, `capacity`, `weekday_price`, `weekend_price`) VALUES
+(1, 'Kalikepiting', 'Kali tempat berbagai macam spesies tinggal.', 'Surabaya', 400, 5000, 7000),
+(2, 'Batu', 'Keras lho.', 'Malang', 150, 15000, 17000),
+(3, 'Rumah Makan', 'Tempat beristirahat sembari mengisi perut.', 'Solo', 1000, 30000, 35000);
+
+
+/*==============================================================*/
+/* Dumping data for table `discounts`*/
+/*==============================================================*/
+INSERT INTO `discounts` (`description`, `code`, `discount_value`, `start_time`, `end_time`) VALUES
+('PiknikYuk Pengguna Baru', 'PYPROMOBARU', '50', '2019-03-01', '2019-05-31'),
+('PiknikYuk Promo #1', 'PYPROMO1', '50', '2019-03-01', '2019-03-31'),
+('PiknikYuk Promo #2', 'PYPROMO2', '15', '2019-04-01', '2019-04-30'),
+('PiknikYuk Promo #3', 'PYPROMO3', '20', '2019-05-01', '2019-05-31');
+
+
+/*==============================================================*/
+/* Dumping data for table `opening_hours`*/
+/*==============================================================*/
+INSERT INTO `opening_hours` (`tour_location_id`, `day`,  `open_time`, `close_time`) VALUES
+(1, 1, '07:00:00', '22:00:00'),
+(1, 2, '07:00:00', '22:00:00'),
+(1, 3, '07:00:00', '22:00:00'),
+(1, 4, '07:00:00', '22:00:00'),
+(1, 5, '07:00:00', '22:00:00'),
+(1, 6, '07:00:00', '22:00:00'),
+(1, 7, '07:00:00', '22:00:00'),
+
+(2, 1, '10:00:00', '02:00:00'),
+(2, 2, '10:00:00', '02:00:00'),
+(2, 3, '10:00:00', '02:00:00'),
+(2, 4, '10:00:00', '02:00:00'),
+(2, 5, '10:00:00', '02:00:00'),
+(2, 6, '10:00:00', '02:00:00'),
+(2, 7, '10:00:00', '02:00:00'),
+
+(3, 1, '10:00:00', '19:30:00'),
+(3, 2, '10:00:00', '19:30:00'),
+(3, 3, '10:00:00', '19:30:00'),
+(3, 4, '10:00:00', '19:30:00'),
+(3, 5, '10:00:00', '19:30:00'),
+(3, 6, '10:00:00', '19:30:00'),
+(3, 7, '10:00:00', '19:30:00');
 

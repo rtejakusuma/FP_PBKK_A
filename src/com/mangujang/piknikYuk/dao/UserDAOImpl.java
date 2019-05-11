@@ -34,4 +34,38 @@ public class UserDAOImpl implements UserDAO {
 		return users;
 	}
 
+	@Override
+	public void saveUser(User theUser) {
+		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// save the user
+		currentSession.saveOrUpdate(theUser);
+	}
+
+	@Override
+	public User getUser(int theId) {
+		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// get the query result
+		User theUser = currentSession.get(User.class, theId);
+		
+		return theUser;
+	}
+
+	@Override
+	public void deleteUser(int theId) {
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// delete user
+		Query theQuery = 
+				currentSession.createQuery("delete from User where id=:userId");
+		theQuery.setParameter("userId", theId);		
+		theQuery.executeUpdate();
+	}
+
 }
