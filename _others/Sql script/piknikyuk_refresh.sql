@@ -74,8 +74,8 @@ create table TOUR_LOCATIONS
 /*==============================================================*/
 create table USERS
 (
-   id         	        int not null auto_increment,
-   discount_id          int,
+   id         	         int not null auto_increment,
+   discount_id          int default null,
    username             varchar(50) not null,
    email                varchar(50) not null,
    password             char(64) not null,
