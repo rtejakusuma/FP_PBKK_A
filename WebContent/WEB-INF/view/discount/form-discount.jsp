@@ -22,6 +22,10 @@
 	    					<td><form:input path="description" /></td>
 	    				</tr>
 	    				<tr>
+	    					<td><label>Kode Promo:</label></td>
+	    					<td><form:input path="code" /></td>
+	    				</tr>
+	    				<tr>
 	    					<td><label>Nilai Diskon:</label></td>
 	    					<td><form:input path="discountValue" /></td>
 	    				</tr>

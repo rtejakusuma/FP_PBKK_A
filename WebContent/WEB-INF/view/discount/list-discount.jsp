@@ -21,6 +21,7 @@
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Deskripsi</th>
+					<th scope="col">Kode Diskon</th>
 					<th scope="col">Nilai diskon</th>
 					<th scope="col">Waktu mulai</th>
 					<th scope="col">Waktu berakhir</th>				
@@ -31,6 +32,7 @@
 					<tr>
 						<th style="width: 5%" scope="row">${discount.id}</th>
 						<td style="width: 15%">${discount.description}</td>
+						<td style="width: 15%">${discount.code}</td>
 						<td style="width: 15%">${discount.discountValue}</td>
 						<td style="width: 15%">${discount.startTime}</td>
 						<td style="width: 15%">${discount.endTime}</td>
@@ -39,7 +41,7 @@
 			</c:forEach>			
 	    </table>
 	    <div class="col-3-md" style="float: right; margin: 16px 0;">
-	    	<button class="btn btn-primary"><a href="../home">Beranda</a></button>
+	    	<button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Beranda</a></button>
 	    </div>	    	
     </div>	
 </body>

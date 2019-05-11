@@ -62,6 +62,7 @@ public class DiscountController {
 	@PostMapping("/saveDiscount")
 	public String saveDiscount(
 			@RequestParam("description") String description,
+			@RequestParam("code") String code,
 			@RequestParam("discountValue") Double discountValue,
 			@RequestParam("startTime") String startTime,
 			@RequestParam("endTime") String endTime
@@ -75,6 +76,7 @@ public class DiscountController {
  		Discounts theDiscount = new Discounts();
  		
  		theDiscount.setDescription(description);
+ 		theDiscount.setCode(code);
  		theDiscount.setDiscountValue(discountValue);
  		theDiscount.setStartTime(startDate);
  		theDiscount.setEndTime(endDate);

@@ -117,10 +117,10 @@ INSERT INTO `tour_locations` (`id`, `name`, `description`, `location`, `capacity
 /* Dumping data for table `discounts`*/
 /*==============================================================*/
 INSERT INTO `discounts` (`description`, `code`, `discount_value`, `start_time`, `end_time`) VALUES
-('PiknikYuk Pengguna Baru', `PYPROMOBARU`, '50', '2019-03-01', '2019-05-31'),
-('PiknikYuk Promo #1', `PYPROMO1`, '50', '2019-03-01', '2019-03-31'),
-('PiknikYuk Promo #2', `PYPROMO2`, '15', '2019-04-01', '2019-04-30'),
-('PiknikYuk Promo #3', `PYPROMO3`, '20', '2019-05-01', '2019-05-31');
+('PiknikYuk Pengguna Baru', 'PYPROMOBARU', '50', '2019-03-01', '2019-05-31'),
+('PiknikYuk Promo #1', 'PYPROMO1', '50', '2019-03-01', '2019-03-31'),
+('PiknikYuk Promo #2', 'PYPROMO2', '15', '2019-04-01', '2019-04-30'),
+('PiknikYuk Promo #3', 'PYPROMO3', '20', '2019-05-01', '2019-05-31');
 
 
 /*==============================================================*/

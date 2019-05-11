@@ -23,6 +23,9 @@ public class Discounts {
 	@Column(name="description")
 	private String description;
 	
+	@Column(name="code")
+	private String code;
+	
 	@Column(name="discount_value")
 	private double discountValue;
 	
@@ -36,7 +39,7 @@ public class Discounts {
 
 	public Discounts() {
 		super();
-	}
+	} 
 
 	public int getId() {
 		return id;
@@ -52,6 +55,14 @@ public class Discounts {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public double getDiscountValue() {
@@ -77,12 +88,5 @@ public class Discounts {
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-
-	@Override
-	public String toString() {
-		return "Discounts [id=" + id + ", description=" + description + ", discountValue=" + discountValue
-				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
-	}
-	
 	
 }

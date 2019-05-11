@@ -64,7 +64,9 @@
 				</tbody>
 			</c:forEach>			
 	    </table>
-	    <button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Menuju Halaman Awal</a></button>
+	    <div class="col-3-md" style="float: right; margin: 16px 0;">
+	    	<button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Beranda</a></button>
+	    </div>
     </div>	
 </body>
 <script>
