@@ -58,20 +58,24 @@
             <li><a href="${pageContext.request.contextPath}/user/list">Users (admin only)</a></li>
             <li><a class="js-scroll-trigger" href="#about">About</a></li>
             <li><a class="js-scroll-trigger" href="#contact">Contact</a></li>
+            <div style="float:right;">
+	            <li><a href="${pageContext.request.contextPath}/login">Masuk</a></li>
+	            <li><a href="${pageContext.request.contextPath}/user/addUserForm">Daftar</a></li>
+            </div>
         </ul>
   </div>
 
   <!-- Masthead -->
-  <header class="masthead">
+  <header style="background-image: url('${pageContext.request.contextPath}/resources/home/img/bg-masthead.jpg');" class="masthead">
     <!--<div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
 		<div class="col-lg-8 align-self-baseline">-->
-		 <div class="atur1">
+		 <!-- <div class="atur1">
 			<a href="${pageContext.request.contextPath}/login" class="myButton">Login</a>
          </div>
 		 <div class="atur2">
 			<a href="${pageContext.request.contextPath}/user/addUserForm" class="myButton">Register</a>
-         </div>
+         </div> -->
         <!--</div>
       </div>
     </div>-->
