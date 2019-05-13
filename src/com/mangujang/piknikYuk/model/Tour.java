@@ -1,10 +1,15 @@
 package com.mangujang.piknikYuk.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,8 +39,18 @@ public class Tour {
 	@Column(name="weekend_price")
 	private double weekendPrice;
 	
+	@OneToMany(mappedBy="tourLocation", cascade={CascadeType.ALL})
+	private List<OpeningHour> openingHours;
+	
 	public Tour() {
 		
+	}
+
+	public Tour(String name, String description, String location) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.location = location;
 	}
 
 	public int getId() {
@@ -94,10 +109,29 @@ public class Tour {
 		this.weekendPrice = weekendPrice;
 	}
 
+	public List<OpeningHour> getOpeningHour() {
+		return openingHours;
+	}
+
+	public void setOpeningHour(List<OpeningHour> openingHour) {
+		this.openingHours = openingHour;
+	}
+
 	@Override
 	public String toString() {
 		return "Tour [id=" + id + ", name=" + name + ", description=" + description + ", location=" + location
 				+ ", capacity=" + capacity + ", weekdayPrice=" + weekdayPrice + ", weekendPrice=" + weekendPrice + "]";
+	}
+	
+	// bi-directional convenience method
+	public void add(OpeningHour tempOpeningHour) {
+		if(openingHours == null) {
+			openingHours = new ArrayList<>();
+		}
+		
+		openingHours.add(tempOpeningHour);
+		
+		tempOpeningHour.setTourLocation(this);
 	}
 	
 	

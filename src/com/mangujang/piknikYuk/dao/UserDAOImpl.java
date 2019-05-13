@@ -56,6 +56,7 @@ public class UserDAOImpl implements UserDAO {
 		return theUser;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void deleteUser(int theId) {
 		// get current hibernate session
