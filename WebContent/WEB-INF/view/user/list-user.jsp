@@ -57,8 +57,8 @@
 							<c:otherwise><td style="width: 15%">User</td></c:otherwise>
 						</c:choose>
 						<td style="width: 15%">
-							<a title='Update User' href="${updateLink}"><li class="fas fa-edit"></li></a>					
-							<a title='Delete User' href="#" onclick="confirm('${user.id}')"><li class="fas fa-trash"></li></a>
+							<button class="btn btn-primary"><a title='Update User' href="${updateLink}"></a></button>					
+							<button class="btn btn-danger"><a title='Delete User' href="#" onclick="confirm('${user.id}')"></a></button>
 						</td>						
 					</tr>
 				</tbody>

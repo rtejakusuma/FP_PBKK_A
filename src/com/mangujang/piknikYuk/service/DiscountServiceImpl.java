@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mangujang.piknikYuk.dao.DiscountDAO;
-import com.mangujang.piknikYuk.model.Discounts;
+import com.mangujang.piknikYuk.model.Discount;
 
 @Service
 public class DiscountServiceImpl implements DiscountService {
@@ -18,22 +18,29 @@ public class DiscountServiceImpl implements DiscountService {
 	
 	@Override
 	@Transactional
-	public List<Discounts> getDiscounts() {
+	public List<Discount> getDiscounts() {
 		return discountDAO.getDiscounts();
 	}
 
 	@Override
 	@Transactional
-	public void saveDiscount(Discounts theDiscount) {
+	public void saveDiscount(Discount theDiscount) {
 		discountDAO.saveDiscount(theDiscount);
 		
 	}
 
 	@Override
 	@Transactional
-	public Discounts getDiscount(int theId) {
+	public Discount getDiscount(int theId) {
 		// TODO Auto-generated method stub
-		return discountDAO.getDiscounts(theId);
+		return discountDAO.getDiscount(theId);
+	}
+
+	@Override
+	@Transactional
+	public void deleteDiscount(int theId) {
+		// TODO Auto-generated method stub
+		discountDAO.deleteDiscount(theId);
 	}
 	
 

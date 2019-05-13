@@ -15,6 +15,7 @@
 	    <h2>Update Promo</h2>
 	    <div id="container">
 	    	<form:form action="saveDiscount" modelAttribute="discount" method="POST">
+	    		<form:hidden path="id"/>
 	    		<table>
 	    			<tbody>
 	    				<tr>
@@ -31,11 +32,11 @@
 	    				</tr>
 	    				<tr>
 	    					<td><label>Waktu Mulai:</label></td>
-	    					<td><form:input type="date" path="startTime" /></td>
+	    					<td><form:input type="date" path="startTime" value="${discount.startTime}" /></td>
 	    				</tr>
 	    				<tr>
 	    					<td><label>Waktu Berakhir:</label></td>
-	    					<td><form:input type="date" path="endTime" /></td>
+	    					<td><form:input type="date" path="endTime" value="${discount.endTime}" /></td>
 	    				</tr> 
 	    				<tr>
 	    					<td><label></label></td>

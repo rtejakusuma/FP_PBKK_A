@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mangujang.piknikYuk.model.Discounts;
+import com.mangujang.piknikYuk.model.Discount;
 import com.mangujang.piknikYuk.service.DiscountService;
 
 @Controller
@@ -39,7 +39,7 @@ public class DiscountController {
 	public String listDiscount(Model theModel) {
 		
 		// inject discountService
-		List<Discounts> theDiscounts = discountService.getDiscounts();
+		List<Discount> theDiscounts = discountService.getDiscounts();
 		
 		//add tour to theModel
 		theModel.addAttribute("discounts", theDiscounts);
@@ -52,7 +52,7 @@ public class DiscountController {
 	public String showDiscountForm(Model theModel) {
 		
 		// create model to bind form data
-		Discounts theDiscount = new Discounts();
+		Discount theDiscount = new Discount();
 		
 		theModel.addAttribute("discount", theDiscount); // <-- name-value pair
 		
@@ -61,6 +61,7 @@ public class DiscountController {
 	
 	@PostMapping("/saveDiscount")
 	public String saveDiscount(
+			@RequestParam("id") int id,
 			@RequestParam("description") String description,
 			@RequestParam("code") String code,
 			@RequestParam("discountValue") Double discountValue,
@@ -73,8 +74,9 @@ public class DiscountController {
 	    Date endDate = sdf.parse(endTime);
 	    
 	    // date parameter handling
- 		Discounts theDiscount = new Discounts();
+ 		Discount theDiscount = new Discount();
  		
+ 		theDiscount.setId(id);
  		theDiscount.setDescription(description);
  		theDiscount.setCode(code);
  		theDiscount.setDiscountValue(discountValue);
@@ -92,7 +94,7 @@ public class DiscountController {
 			@RequestParam("discountId") int theId, Model theModel) {
 		
 		// get customer from database
-		Discounts theDiscount = discountService.getDiscount(theId);
+		Discount theDiscount = discountService.getDiscount(theId);
 		
 		// set customer as model attribute to pre-populate the form
 		theModel.addAttribute("discount", theDiscount);
@@ -101,4 +103,15 @@ public class DiscountController {
 		
 		return "discount/update-discount";
 	}
+	
+	@GetMapping("delete")
+	public String deleteDiscount(
+			@RequestParam ("discountId") int theId) {
+		
+		//delete the discount
+		discountService.deleteDiscount(theId);
+		
+		return "redirect:/discount/list";
+	}
+	
 }

@@ -35,6 +35,7 @@
 				</c:url>
 				<!-- set delete url  -->
 				<c:url var="deleteLink" value="/discount/delete">
+					<c:param name="discountId" value="${discount.id}"></c:param>
 				</c:url>
 				
 				<tbody>
@@ -46,7 +47,7 @@
 						<td style="width: 15%">${discount.startTime}</td>
 						<td style="width: 15%">${discount.endTime}</td>
 						<td><button class="btn btn-primary"><a title='Update discount' href="${updateLink}">Update</a></button>
-						<button class="btn btn-danger"><a title='Delete discount' href="#" onclick="confirm('${discount.id}')">Delete</a></button></td>
+						<button class="btn btn-danger"><a title='Delete discount' href="${deleteLink }" onclick="if(!(confirm('Yakin menghapus?'))) return false">Delete</a></button></td>
 					</tr>
 				</tbody>
 			</c:forEach>
