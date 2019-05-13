@@ -26,7 +26,9 @@
 		</c:if>
 	    <h2>Daftar Promo</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    	<button class="btn btn-primary"><a href="addDiscountForm">Tambahkan Promo</a></button>
+	    	<a href="addDiscountForm">
+	    		<button class="btn btn-primary">Tambahkan Promo</button>
+	    	</a>
 	    </div>
 	    <table class="table table-bordered table-dark">
 			<thead>
@@ -35,7 +37,8 @@
 					<th scope="col">Kode Promo</th>
 					<th scope="col">Nilai diskon</th>
 					<th scope="col">Waktu mulai</th>
-					<th scope="col">Waktu berakhir</th>				
+					<th scope="col">Waktu berakhir</th>
+					<th scope="col">Aksi</th>				
 				</tr>
 			</thead>
 			<c:forEach var="discount" items="${discounts}">
@@ -54,14 +57,22 @@
 						<td style="width: 15%">${discount.discountValue}</td>
 						<td style="width: 15%">${discount.startTime}</td>
 						<td style="width: 15%">${discount.endTime}</td>
-						<td><button class="btn btn-primary"><a title='Update discount' href="${updateLink}">Ubah</a></button>
-						<button class="btn btn-danger"><a title='Delete discount' href="#" onclick="confirm('${discount.id}')">Hapus</a></button></td>
+						<td>
+							<a title='Update discount' href="${updateLink}">
+								<button class="btn btn-primary">Ubah</button>
+							</a>
+							<a title='Delete discount' onclick="confirm('${discount.id}')">
+								<button class="btn btn-danger">Hapus</button>
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 	    </table>
 	    <div class="col-3-md" style="float: right; margin: 16px 0;">
-	    	<button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Beranda</a></button>
+	    	<a href="${pageContext.request.contextPath}/home">
+	    		<button class="btn btn-primary">Beranda</button>
+	    	</a>
 	    </div>	    	
     </div>	
 </body>

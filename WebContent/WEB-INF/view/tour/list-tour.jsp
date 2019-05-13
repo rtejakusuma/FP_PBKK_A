@@ -14,7 +14,9 @@
 	<div class="center-items">
 	    <h2>Daftar Tempat Wisata</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    	<button class="btn btn-primary"><a href="addUserForm">Tambahkan Tempat Wisata</a></button>
+	    <a href="addUserForm">
+	    	<button class="btn btn-primary">Tambahkan Tempat Wisata</button>
+	    </a>
 	    </div>
 	    <table class="table table-bordered table-dark">
 			<thead>
@@ -37,7 +39,9 @@
 			</c:forEach>			
 	    </table>
 	    <div class="col-3-md" style="float: right; margin: 16px 0;">
-	    	<button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Beranda</a></button>
+	    	<a href="${pageContext.request.contextPath}/home">
+	    		<button class="btn btn-primary">Beranda</button>
+	    	</a>
 	    </div>
     </div>	
 </body>

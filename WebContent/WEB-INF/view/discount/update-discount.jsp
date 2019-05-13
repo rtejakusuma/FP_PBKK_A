@@ -47,8 +47,12 @@
 	    	</form:form>
 	    </div>
 	    <div class="col-3-md" style="float: right; margin: 16px 0;">
-	    	<button class="btn btn-primary"><a href="${pageContext.request.contextPath}/discount/list">Daftar Promo</a></button>
-	    	<button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Beranda</a></button>
+	    	<a href="${pageContext.request.contextPath}/discount/list">
+	    		<button class="btn btn-primary">Daftar Promo</button>
+	    	</a>
+	    	<a href="${pageContext.request.contextPath}/home">
+	    		<button class="btn btn-primary">Beranda</button>
+	    	</a>	    
 	    </div>	 
     </div>	
 </body>
