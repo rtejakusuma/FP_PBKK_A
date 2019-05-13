@@ -7,4 +7,6 @@ public interface DiscountService {
 	public List<Discounts> getDiscounts();
 	
 	public void saveDiscount(Discounts theDiscount);
+
+	public Discounts getDiscount(int theId);
 }

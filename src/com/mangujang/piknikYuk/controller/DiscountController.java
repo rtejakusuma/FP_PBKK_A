@@ -86,4 +86,19 @@ public class DiscountController {
 	    
 		return "redirect:/discount/list";
 	}
+	
+	@GetMapping("/updateDiscountForm")
+	public String updateDiscountForm(
+			@RequestParam("discountId") int theId, Model theModel) {
+		
+		// get customer from database
+		Discounts theDiscount = discountService.getDiscount(theId);
+		
+		// set customer as model attribute to pre-populate the form
+		theModel.addAttribute("discount", theDiscount);
+		
+		// send over to our form
+		
+		return "update-discount";
+	}
 }

@@ -8,4 +8,6 @@ public interface DiscountDAO {
 	public List<Discounts> getDiscounts();
 
 	public void saveDiscount(Discounts theDiscount);
+
+	public Discounts getDiscounts(int theId);
 }

@@ -28,6 +28,13 @@ public class DiscountServiceImpl implements DiscountService {
 		discountDAO.saveDiscount(theDiscount);
 		
 	}
+
+	@Override
+	@Transactional
+	public Discounts getDiscount(int theId) {
+		// TODO Auto-generated method stub
+		return discountDAO.getDiscounts(theId);
+	}
 	
 
 }

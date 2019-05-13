@@ -28,6 +28,15 @@
 				</tr>
 			</thead>
 			<c:forEach var="discount" items="${discounts}">
+				
+				<!-- set update url  -->
+				<c:url var="updateLink" value="/discount/updateDiscountForm">
+					<c:param name="discountId" value="${discount.id}" />
+				</c:url>
+				<!-- set delete url  -->
+				<c:url var="deleteLink" value="/discount/delete">
+				</c:url>
+				
 				<tbody>
 					<tr>
 						<th style="width: 5%" scope="row">${discount.id}</th>
@@ -36,9 +45,11 @@
 						<td style="width: 15%">${discount.discountValue}</td>
 						<td style="width: 15%">${discount.startTime}</td>
 						<td style="width: 15%">${discount.endTime}</td>
+						<td><button class="btn btn-primary"><a title='Update discount' href="${updateLink}">Update</a></button>
+						<button class="btn btn-danger"><a title='Delete discount' href="#" onclick="confirm('${discount.id}')">Delete</a></button></td>
 					</tr>
 				</tbody>
-			</c:forEach>			
+			</c:forEach>
 	    </table>
 	    <div class="col-3-md" style="float: right; margin: 16px 0;">
 	    	<button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Beranda</a></button>
