@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mangujang.piknikYuk.model.Discount;
 import com.mangujang.piknikYuk.service.DiscountService;
@@ -104,12 +105,18 @@ public class DiscountController {
 		return "discount/update-discount";
 	}
 	
-	@GetMapping("delete")
+	@GetMapping("/delete")
 	public String deleteDiscount(
-			@RequestParam ("discountId") int theId) {
+			@RequestParam ("discountId") int theId,
+			RedirectAttributes theModel
+			) {
 		
 		//delete the discount
 		discountService.deleteDiscount(theId);
+		
+		// flag?
+		// set user data to model object
+		theModel.addFlashAttribute("delete_flag", 1);
 		
 		return "redirect:/discount/list";
 	}

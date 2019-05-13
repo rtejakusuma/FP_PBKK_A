@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,6 @@
 	    <table class="table table-bordered table-dark">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
 					<th scope="col">Name</th>
 					<th scope="col">Email</th>
 					<th scope="col">Tipe Pengguna</th>
@@ -49,7 +48,6 @@
 				
 				<tbody>
 					<tr>
-						<th style="width: 5%" scope="row">${user.id}</th>
 						<td style="width: 15%">${user.username}</td>
 						<td style="width: 15%">${user.email}</td>
 						<c:choose>
@@ -57,8 +55,8 @@
 							<c:otherwise><td style="width: 15%">User</td></c:otherwise>
 						</c:choose>
 						<td style="width: 15%">
-							<button class="btn btn-primary"><a title='Update User' href="${updateLink}"></a></button>					
-							<button class="btn btn-danger"><a title='Delete User' href="#" onclick="confirm('${user.id}')"></a></button>
+							<button class="btn btn-primary"><a title='Update User' href="${updateLink}">Ubah</a></button>					
+							<button class="btn btn-danger"><a title='Delete User' href="#" onclick="confirm('${user.id}')">Hapus</a></button>
 						</td>						
 					</tr>
 				</tbody>
