@@ -99,6 +99,6 @@ public class DiscountController {
 		
 		// send over to our form
 		
-		return "update-discount";
+		return "discount/update-discount";
 	}
 }

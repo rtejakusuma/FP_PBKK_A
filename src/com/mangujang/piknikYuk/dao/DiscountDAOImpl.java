@@ -43,5 +43,17 @@ public class DiscountDAOImpl implements DiscountDAO {
 		currentSession.save(theDiscount);
 		
 	}
+
+	@Override
+	public Discounts getDiscounts(int theId) {
+		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// now retrieve/read from database using the primary key
+		Discounts theDiscount = currentSession.get(Discounts.class, theId);
+		
+		return theDiscount;
+	}
 	
 }
