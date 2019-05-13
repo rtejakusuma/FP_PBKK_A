@@ -28,6 +28,8 @@ public class User {
 	@Column(name="role")
 	private int role;
 	
+	
+	
 	public User() {
 		
 	}
