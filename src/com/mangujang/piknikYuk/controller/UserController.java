@@ -97,7 +97,7 @@ public class UserController {
 		}
 		
 		//save the customer using our service
-		System.out.println(theUser.getId());
+		
 		userService.saveUser(theUser);
 		return "redirect:/user/list";
 	}

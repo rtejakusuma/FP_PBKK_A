@@ -33,4 +33,41 @@ public class TourDAOImpl implements TourDAO {
 		return tours;
 	}
 
+	@Override
+	public void saveTour(Tour theTour) {
+		
+		//get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		//save/update the tour
+		currentSession.saveOrUpdate(theTour);
+		
+	}
+
+	@Override
+	public Tour getTour(int theId) {
+		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		//now retrieve/read from database using the primary key
+		Tour theTour = currentSession.get(Tour.class, theId);
+		
+		return theTour;
+	}
+
+	@Override
+	public void deleteTour(int theId) {
+		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		//delete object with primary key
+		Query theQuery = currentSession.createQuery("delete from Tour where id=:tourId");
+		theQuery.setParameter("tourId", theId);
+		
+		theQuery.executeUpdate();
+		
+	}
+
 }

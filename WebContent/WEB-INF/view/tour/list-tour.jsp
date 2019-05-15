@@ -14,7 +14,7 @@
 	<div class="center-items">
 	    <h2>Daftar Tempat Wisata</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    <a href="addUserForm">
+	    <a href="addTourForm">
 	    	<button class="btn btn-primary">Tambahkan Tempat Wisata</button>
 	    </a>
 	    </div>
