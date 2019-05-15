@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="discounts")
-public class Discounts {
+public class Discount {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public class Discounts {
 	@Temporal(TemporalType.DATE)
 	private Date endTime;
 
-	public Discounts() {
+	public Discount() {
 		super();
 	} 
 

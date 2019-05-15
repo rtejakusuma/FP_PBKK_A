@@ -6,16 +6,16 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Tambah Promo</title>
+	<title>Update Promo</title>
 	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">		
 </head>
 <body>
 	<div class="center-items">
-	    <h2>Tambah Promo</h2>
+	    <h2>Update Promo</h2>
 	    <div id="container">
 	    	<form:form action="saveDiscount" modelAttribute="discount" method="POST">
-	    		<form:hidden path="id" />
+	    		<form:hidden path="id"/>
 	    		<table>
 	    			<tbody>
 	    				<tr>
@@ -32,11 +32,11 @@
 	    				</tr>
 	    				<tr>
 	    					<td><label>Waktu Mulai:</label></td>
-	    					<td><form:input type="date" path="startTime" /></td>
+	    					<td><form:input type="date" path="startTime" value="${discount.startTime}" /></td>
 	    				</tr>
 	    				<tr>
 	    					<td><label>Waktu Berakhir:</label></td>
-	    					<td><form:input type="date" path="endTime" /></td>
+	    					<td><form:input type="date" path="endTime" value="${discount.endTime}" /></td>
 	    				</tr> 
 	    				<tr>
 	    					<td><label></label></td>
@@ -52,7 +52,7 @@
 	    	</a>
 	    	<a href="${pageContext.request.contextPath}/home">
 	    		<button class="btn btn-primary">Beranda</button>
-	    	</a>
+	    	</a>	    
 	    </div>	 
     </div>	
 </body>

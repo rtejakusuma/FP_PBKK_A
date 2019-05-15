@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -27,12 +27,13 @@
 		</c:if>
 	    <h2>Daftar Pengguna</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    	<button class="btn btn-primary"><a href="addUserForm">Tambahkan Pengguna</a></button>
+	    	<a href="addUserForm">
+	    		<button class="btn btn-primary">Tambahkan Pengguna</button>
+	    	</a>
 	    </div>
 	    <table class="table table-bordered table-dark">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
 					<th scope="col">Name</th>
 					<th scope="col">Email</th>
 					<th scope="col">Tipe Pengguna</th>
@@ -49,7 +50,6 @@
 				
 				<tbody>
 					<tr>
-						<th style="width: 5%" scope="row">${user.id}</th>
 						<td style="width: 15%">${user.username}</td>
 						<td style="width: 15%">${user.email}</td>
 						<c:choose>
@@ -57,15 +57,21 @@
 							<c:otherwise><td style="width: 15%">User</td></c:otherwise>
 						</c:choose>
 						<td style="width: 15%">
-							<a title='Update User' href="${updateLink}"><li class="fas fa-edit"></li></a>					
-							<a title='Delete User' href="#" onclick="confirm('${user.id}')"><li class="fas fa-trash"></li></a>
+							<a title='Update User' href="${updateLink}">
+								<button class="btn btn-primary">Ubah</button>
+							</a>
+							<a title='Delete User' onclick="confirm('${user.id}')">					
+								<button class="btn btn-danger">Hapus</button>
+							</a>
 						</td>						
 					</tr>
 				</tbody>
 			</c:forEach>			
 	    </table>
 	    <div class="col-3-md" style="float: right; margin: 16px 0;">
-	    	<button class="btn btn-primary"><a href="${pageContext.request.contextPath}/home">Beranda</a></button>
+	    	<a href="${pageContext.request.contextPath}/home">
+	    		<button class="btn btn-primary">Beranda</button>
+	    	</a>
 	    </div>
     </div>	
 </body>
