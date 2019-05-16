@@ -24,7 +24,9 @@
 					<th scope="col">#</th>
 					<th scope="col">Nama</th>
 					<th scope="col">Dekripsi</th>
-					<th scope="col">Lokasi</th>					
+					<th scope="col">Lokasi</th>
+					<th scope="col">Kapasitas</th>
+					<th scope="col">Harga</th>					
 				</tr>
 			</thead>
 			<c:forEach var="tour" items="${tours}">
@@ -34,6 +36,10 @@
 						<td style="width: 15%">${tour.name}</td>
 						<td style="width: 15%">${tour.description}</td>
 						<td style="width: 15%">${tour.location}</td>
+						<td style="width: 15%">${tour.capacity}</td>
+						<td style="width: 15%">
+							Weekdays: Rp.${tour.weekdayPrice} </br> Weekend: Rp.${tour.weekendPrice}
+						</td>
 					</tr>
 				</tbody>
 			</c:forEach>			

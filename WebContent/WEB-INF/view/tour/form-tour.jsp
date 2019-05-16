@@ -41,11 +41,7 @@
 	    				<tr>
 	    					<td><label>Harga Weekend:</label></td>
 	    					<td><form:input path="weekendPrice" /></td>
-	    				</tr> 
-	    				<!-- <tr>
-	    					<td><label>Lokasi Wisata:</label></td>
-	    					<td><form:input path="day" /></td>
-	    				</tr> -->
+	    				</tr>
 	    				<tr>
 	    					<td><label></label></td>
 	    					<td><input type="submit" value="Save"/></td>
