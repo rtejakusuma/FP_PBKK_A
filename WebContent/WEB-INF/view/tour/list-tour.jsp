@@ -9,6 +9,9 @@
 	<title>Daftar Tempat Wisata</title>
 	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>	
 </head>
 <body>
 	<div class="center-items">
@@ -24,21 +27,30 @@
 					<th scope="col">#</th>
 					<th scope="col">Nama</th>
 					<th scope="col">Dekripsi</th>
-					<th scope="col">Lokasi</th>
-					<th scope="col">Kapasitas</th>
-					<th scope="col">Harga</th>					
+					<th scope="col">Lokasi</th>					
 				</tr>
 			</thead>
 			<c:forEach var="tour" items="${tours}">
+				<!-- set update url  -->
+				<c:url var="updateLink" value="/tour/updateTourForm">
+					<c:param name="tourId" value="${tour.id}" />
+				</c:url>
+				<!-- set delete url  -->
+				<c:url var="deleteLink" value="/tour/delete"></c:url>
+				
 				<tbody>
 					<tr>
-						<th style="width: 5%" scope="row">${tour.id}</th>
+						<td style="width: 15%">${tour.id}</td>
 						<td style="width: 15%">${tour.name}</td>
 						<td style="width: 15%">${tour.description}</td>
 						<td style="width: 15%">${tour.location}</td>
-						<td style="width: 15%">${tour.capacity}</td>
-						<td style="width: 15%">
-							Weekdays: Rp.${tour.weekdayPrice} </br> Weekend: Rp.${tour.weekendPrice}
+						<td>
+							<a title='Update tour' href="${updateLink}">
+								<button class="btn btn-primary">Ubah</button>
+							</a>
+							<a title='Delete tour' onclick="confirm('${tour.id}')">
+								<button class="btn btn-danger">Hapus</button>
+							</a>
 						</td>
 					</tr>
 				</tbody>
@@ -51,4 +63,25 @@
 	    </div>
     </div>	
 </body>
+<script>
+	function confirm(id){
+		swal.fire({
+			title: 'Yakin ingin menghapus data promo?',
+			text: "Data yang dihapus tidak dapat kembali",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yakin, hapus data',
+			cancelButtonText: 'Tidak, kembali',
+			allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false
+		}).then((result) => {
+			if(result.value) {
+		  		window.location.href = "${deleteLink}?tourId="+id; 		
+			}
+		});
+	}
+</script>
 </html>
