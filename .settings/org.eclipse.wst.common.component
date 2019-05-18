@@ -2,7 +2,7 @@
     <wb-module deploy-name="FP_PBKK_A">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="FP_PBKK_A"/>
         <property name="java-output-path" value="/FP_PBKK_A/build/classes"/>
+        <property name="context-root" value="piknikyuk"/>
     </wb-module>
 </project-modules>

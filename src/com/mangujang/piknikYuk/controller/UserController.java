@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,7 +67,17 @@ public class UserController {
 	}
 	
 	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute("user") User theUser) {
+	public String saveUser(
+			@ModelAttribute("user") User theUser,
+			@RequestParam("password_confirm") String tempConfirm,
+			RedirectAttributes theModel
+			) {
+		// check password
+		String tempPass = theUser.getPassword();
+		if(!tempPass.equals(tempConfirm)) {
+			theModel.addFlashAttribute("error", "Password tidak sesuai");
+			return "redirect:/user/addUserForm";
+		}
 		
 		// password hashing
 		MessageDigest digest;
@@ -96,10 +107,20 @@ public class UserController {
 			e.printStackTrace();
 		}
 		
-		//save the customer using our service
+		// check dupes
+		boolean anyDupes = userService.checkDuplicates(theUser.getUsername(), theUser.getEmail());
+		System.out.println(anyDupes);
+		if(!anyDupes) {
+			//save the customer using our service
+			userService.saveUser(theUser);
+			return "redirect:/user/list";
+		}
+		else {
+			theModel.addFlashAttribute("error", "Nama pengguna atau "
+					+ "alamat Email sudah digunakan!");
+			return "redirect:/user/addUserForm";	
+		}
 		
-		userService.saveUser(theUser);
-		return "redirect:/user/list";
 	}
 	
 	@GetMapping("/delete")

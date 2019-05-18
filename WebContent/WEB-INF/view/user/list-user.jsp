@@ -24,6 +24,7 @@
 		            'success'
 				);
 			</script>
+			${delete_flag == 0}	
 		</c:if>
 	    <h2>Daftar Pengguna</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
