@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mangujang.piknikYuk.model.OpeningHour;
 import com.mangujang.piknikYuk.model.Tour;
 import com.mangujang.piknikYuk.model.User;
+import com.mangujang.piknikYuk.service.OpeningService;
 import com.mangujang.piknikYuk.service.TourService;
 
 @Controller
@@ -82,4 +83,25 @@ public class TourController {
 		
 		return "redirect:/tour/list";
 	}
+	
+	//inject openingservice
+	@Autowired
+	public OpeningService openingService;
+		
+	@GetMapping("/open-list")
+	public String openList(
+			@RequestParam("id") int tourId,
+			Model theModel) {
+		
+		//inject openingSercive
+		List<OpeningHour> theOpening = openingService.getOpening();
+		
+		//add tour to the model
+		theModel.addAttribute("opening", theOpening);
+		
+		//load page
+		return "tour/list-opening-tour";
+		
+	}
 }
+

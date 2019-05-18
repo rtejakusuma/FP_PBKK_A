@@ -66,7 +66,7 @@
 <script>
 	function confirm(id){
 		swal.fire({
-			title: 'Yakin ingin menghapus data promo?',
+			title: 'Yakin ingin menghapus data tour?',
 			text: "Data yang dihapus tidak dapat kembali",
 			type: 'warning',
 			showCancelButton: true,
