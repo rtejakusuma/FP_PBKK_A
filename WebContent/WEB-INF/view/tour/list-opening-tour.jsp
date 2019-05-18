@@ -17,7 +17,7 @@
 	<div class="center-items">
 	    <h2>List Opening Hour</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    <a href="addTourForm">
+	    <a href="open-addOpenForm?openingId="+${item[0]}>
 	    	<button class="btn btn-primary">Tambahkan Opening Hour</button>
 	    </a>
 	    </div>
@@ -28,16 +28,16 @@
 					<th scope="col">Hari</th>
 					<th scope="col">Waktu Buka</th>
 					<th scope="col">Waktu Tutup</th>	
-					<th scope="col">Tempat Wisata</th>				
+					<th scope="col">Lokasi Wisata</th>				
 				</tr>
 			</thead>
 			<c:forEach var="item" items="${opening}">
 				<!-- set update url  -->
-				<c:url var="updateLink" value="/tour/updateTourForm">
-					<c:param name="tourId" value="${tour.id}" />
+				<c:url var="updateLink" value="/tour/open-updateOpeningForm">
+					<c:param name="openingId" value="${item[0]}" />
 				</c:url>
 				<!-- set delete url  -->
-				<c:url var="deleteLink" value="/tour/delete"></c:url>
+				<c:url var="deleteLink" value="/tour/deleteOpening"></c:url>
 						
 				<tbody>
 					<tr>
@@ -47,10 +47,10 @@
 						<td style="width: 15%">${item[3]}</td>
 						<td style="width: 15%">${item[4]}</td>
 						<td>
-							<a title='Update tour' href="${updateLink}">
+							<a title='Update opening' href="${updateLink}">
 								<button class="btn btn-primary">Ubah</button>
 							</a>
-							<a title='Delete tour' onclick="confirm('${tour.id}')">
+							<a title='Delete opening' onclick="confirm('${item[0]}')">
 								<button class="btn btn-danger">Hapus</button>
 							</a>
 						</td>

@@ -23,4 +23,25 @@ public class OpeningServiceImpl implements OpeningService {
 		return openingDAO.getOpening(id);
 	}
 
+	@Override
+	@Transactional
+	public void saveOpening(OpeningHour theOpening) {
+		// TODO Auto-generated method stub
+		openingDAO.saveOpening(theOpening);
+	}
+
+	@Override
+	@Transactional
+	public OpeningHour getOpenings(int id) {
+		// TODO Auto-generated method stub
+		return openingDAO.getOpenings(id);
+	}
+
+	@Override
+	@Transactional
+	public void deleteOpening(int id) {
+		// TODO Auto-generated method stub
+		openingDAO.deleteOpening(id);
+	}
+
 }

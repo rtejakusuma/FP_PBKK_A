@@ -84,6 +84,7 @@ public class TourController {
 		return "redirect:/tour/list";
 	}
 	
+	//OPENING SERRVICE
 	//inject openingservice
 	@Autowired
 	public OpeningService openingService;
@@ -104,5 +105,49 @@ public class TourController {
 		return "tour/list-opening-tour";
 		
 	}
+	
+	@GetMapping("/open-addOpenForm")
+	public String showOpenForm(Model theModel) {
+		//create model to bind form data
+		OpeningHour theOpening = new OpeningHour();
+		
+		theModel.addAttribute("opening", theOpening);
+		
+		return "tour/form-open";
+	}
+	
+	@GetMapping("/open-updateOpeningForm")
+	public String updateOpeningForm(
+			@RequestParam("openingId") int id, Model theModel) {
+		
+		//get customer form database
+		OpeningHour theOpening = openingService.getOpenings(id);
+		//set as model atrribure
+		theModel.addAttribute("opening", theOpening);
+		//send over to our form
+		return "tour/update-open";
+	}
+	
+	@PostMapping("/open-saveOpening")
+	public String saveOpening(@ModelAttribute("opening") OpeningHour theOpening) {
+		
+		openingService.saveOpening(theOpening);
+		return "redirect:/tour/list-opening-tour";
+	}
+	
+	@GetMapping("deleteOpening")
+	public String deleteOpening(
+			@RequestParam("openingId") int id, RedirectAttributes theModel) {
+		
+		//delete user
+		openingService.deleteOpening(id);
+		
+		//flag?
+		//set tour data to model object
+		theModel.addFlashAttribute("delete_flag", 1);
+		
+		return "redirect:/tour/list-opening-tour";
+	}
+	
 }
 
