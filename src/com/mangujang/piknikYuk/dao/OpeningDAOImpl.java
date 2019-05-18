@@ -17,17 +17,21 @@ public class OpeningDAOImpl implements OpeningDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public List<OpeningHour> getOpening() {
+	public List<OpeningHour> getOpening(int id) {
 		// TODO Auto-generated method stub
 		
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		//create a query
-		Query<OpeningHour> selectAll = currentSession.createQuery("from OpeningHour", OpeningHour.class);
+		
+		//create a query		
+		Query selectAll = currentSession.createSQLQuery("select * from opening_hours where tour_location_id =:id")
+				.setParameter("id", id);
+		
 		//get query result
 		List<OpeningHour> opening = selectAll.getResultList();
-		
+						
 		return opening;
 	}
 

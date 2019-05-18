@@ -94,7 +94,8 @@ public class TourController {
 			Model theModel) {
 		
 		//inject openingSercive
-		List<OpeningHour> theOpening = openingService.getOpening();
+		List<OpeningHour> theOpening = openingService.getOpening(tourId);
+		System.out.println(openingService.getOpening(tourId));
 		
 		//add tour to the model
 		theModel.addAttribute("opening", theOpening);

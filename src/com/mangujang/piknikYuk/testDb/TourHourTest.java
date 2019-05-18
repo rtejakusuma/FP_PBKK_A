@@ -40,7 +40,7 @@ public class TourHourTest {
 			// session.save(tempTour);
 			
 			// get Tour object
-			int theId = 1;
+			int theId = 2;
 			Tour tempTour = session.get(Tour.class, theId);
 			
 			// create some openingHours

@@ -18,9 +18,9 @@ public class OpeningServiceImpl implements OpeningService {
 	
 	@Override
 	@Transactional
-	public List<OpeningHour> getOpening() {
+	public List<OpeningHour> getOpening(int id) {
 		// TODO Auto-generated method stub
-		return openingDAO.getOpening();
+		return openingDAO.getOpening(id);
 	}
 
 }
