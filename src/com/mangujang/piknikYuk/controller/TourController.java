@@ -1,6 +1,13 @@
 package com.mangujang.piknikYuk.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +21,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mangujang.piknikYuk.model.OpeningHour;
 import com.mangujang.piknikYuk.model.Tour;
-import com.mangujang.piknikYuk.model.User;
 import com.mangujang.piknikYuk.service.OpeningService;
 import com.mangujang.piknikYuk.service.TourService;
 
@@ -44,7 +50,7 @@ public class TourController {
 		
 		//create model to bind form data
 		Tour theTour = new Tour();
-		OpeningHour openingHour = new OpeningHour();
+		
 		theModel.addAttribute("tour", theTour);
 		
 		return "tour/form-tour";
@@ -70,7 +76,7 @@ public class TourController {
 		return "tour/update-tour";
 	}
 	
-	@GetMapping("delete")
+	@GetMapping("/delete")
 	public String deleteTour(
 			@RequestParam("tourId") int theId, RedirectAttributes theModel) {
 		
@@ -94,6 +100,16 @@ public class TourController {
 			@RequestParam("id") int tourId,
 			Model theModel) {
 		
+		List<String> days = new ArrayList<>();
+		days.add("Senin");
+		days.add("Selasa");
+		days.add("Rabu");
+		days.add("Kamis");
+		days.add("Jumat");
+		days.add("Sabtu");
+		days.add("Minggu");
+		theModel.addAttribute("days", days);
+		
 		//inject openingSercive
 		List<OpeningHour> theOpening = openingService.getOpening(tourId);
 		System.out.println(openingService.getOpening(tourId));
@@ -102,40 +118,60 @@ public class TourController {
 		theModel.addAttribute("opening", theOpening);
 		
 		//load page
-		return "tour/list-opening-tour";
+		return "tour/list-open";
 		
 	}
 	
-	@GetMapping("/open-addOpenForm")
-	public String showOpenForm(Model theModel) {
-		//create model to bind form data
-		OpeningHour theOpening = new OpeningHour();
+	@GetMapping("/open-addForm")
+	public String showOpenForm(
+			Model theModel,
+			@RequestParam("id") int tourId
+			) {
+		Map<String, String> days = new LinkedHashMap<String, String>();
+		days.put("1", "Senin");
+		days.put("2", "Selasa");
+		days.put("3", "Rabu");
+		days.put("4", "Kamis");
+		days.put("5", "Jumat");
+		days.put("6", "Sabtu");
+		days.put("7", "Minggu");
+		theModel.addAttribute("days", days);
 		
+		OpeningHour theOpening = new OpeningHour();
 		theModel.addAttribute("opening", theOpening);
 		
 		return "tour/form-open";
 	}
 	
-	@GetMapping("/open-updateOpeningForm")
-	public String updateOpeningForm(
-			@RequestParam("openingId") int id, Model theModel) {
+	@PostMapping("/open-save")
+	public String saveOpening(
+			@RequestParam("id") int id,
+			@RequestParam("day") int day,
+			@RequestParam("openTime") String openTime,
+			@RequestParam("closeTime") String closeTime,
+			@RequestParam("tourLocation") int tourId
+			) throws ParseException {
 		
-		//get customer form database
-		OpeningHour theOpening = openingService.getOpenings(id);
-		//set as model atrribure
-		theModel.addAttribute("opening", theOpening);
-		//send over to our form
-		return "tour/update-open";
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+		openTime  = openTime.concat(":00");
+		closeTime = closeTime.concat(":00");
+		
+		Date open = sdf.parse(openTime);
+		Date close = sdf.parse(closeTime);
+		
+		OpeningHour opening = new OpeningHour();
+		
+		opening.setDay(day);
+		opening.setOpenTime(open);
+		opening.setCloseTime(close);
+		
+		openingService.saveOpening(opening, tourId);
+		
+		return "redirect:/tour/open-list?id="+tourId;
 	}
 	
-	@PostMapping("/open-saveOpening")
-	public String saveOpening(@ModelAttribute("opening") OpeningHour theOpening) {
-		
-		openingService.saveOpening(theOpening);
-		return "redirect:/tour/list-opening-tour";
-	}
-	
-	@GetMapping("deleteOpening")
+	@GetMapping("/open-delete")
 	public String deleteOpening(
 			@RequestParam("openingId") int id, RedirectAttributes theModel) {
 		

@@ -25,9 +25,9 @@ public class OpeningServiceImpl implements OpeningService {
 
 	@Override
 	@Transactional
-	public void saveOpening(OpeningHour theOpening) {
+	public void saveOpening(OpeningHour theOpening, int tourId) {
 		// TODO Auto-generated method stub
-		openingDAO.saveOpening(theOpening);
+		openingDAO.saveOpening(theOpening, tourId);
 	}
 
 	@Override

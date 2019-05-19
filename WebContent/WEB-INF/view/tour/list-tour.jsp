@@ -27,7 +27,8 @@
 					<th scope="col">#</th>
 					<th scope="col">Nama</th>
 					<th scope="col">Dekripsi</th>
-					<th scope="col">Lokasi</th>					
+					<th scope="col">Lokasi</th>	
+					<th scope="col">Aksi</th>					
 				</tr>
 			</thead>
 			<c:forEach var="tour" items="${tours}">
@@ -37,6 +38,11 @@
 				</c:url>
 				<!-- set delete url  -->
 				<c:url var="deleteLink" value="/tour/delete"></c:url>
+				
+				<!-- set open hour url  -->
+				<c:url var="openHour" value="/tour/open-addForm">
+					<c:param name="id" value="${tour.id}" />
+				</c:url>
 				
 				<tbody>
 					<tr>
@@ -48,6 +54,9 @@
 							<a title='Update tour' href="${updateLink}">
 								<button class="btn btn-primary">Ubah</button>
 							</a>
+							<a title='Add open hour' href="${openHour}">
+								<button class="btn btn-secondary">Jam buka</button>
+							</a>							
 							<a title='Delete tour' onclick="confirm('${tour.id}')">
 								<button class="btn btn-danger">Hapus</button>
 							</a>
