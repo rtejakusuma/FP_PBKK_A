@@ -27,7 +27,13 @@
 				<span class="login100-form-title p-b-41">
 					Registrasi <em>Pengguna</em> Baru
 				</span>
-				<form:form onsubmit="return checkPass(this)" action="saveUser" modelAttribute="user" method="POST" class="login100-form validate-form p-b-33 p-t-5">
+				<c:if test="${error != null}">
+					<div id="errors" class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+						<strong>Kesalahan!<br></strong> ${error}
+					</div>					
+				</c:if>
+				<form:form action="saveUser" modelAttribute="user" method="POST" class="login100-form validate-form p-b-33 p-t-5">
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<form:input cssClass="input100" type="text" path="username" placeholder="Nama" />
@@ -77,21 +83,6 @@
 	<script src="<c:url value="/resources/register/vendor/countdowntime/countdowntime.js"/>"></script>
 <!--===============================================================================================-->
 	<script src="<c:url value="/resources/register/js/main.js"/>"></script></body>
-	<!--===============================================================================================-->
-	<script>
-		function checkPass(form){
-			var pass = form.password.value;
-			var confirm = form.password_confirm.value;
-			
-			if(pass !== confirm || pass === null || confirm === null){
-				form.password_confirm.focus();
-				alert("Password Confiramtion Failed!")
-				return false;
-			}
-			
-			return true;
-			
-			
-		}
-	</script>
+<!--===============================================================================================-->
+
 </html>

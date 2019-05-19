@@ -41,4 +41,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.deleteUser(theId);		
 	}
 
+	@Override
+	@Transactional
+	public boolean checkDuplicates(String username, String email) {		
+		return userDAO.checkDuplicates(username, email);
+	}
+
 }

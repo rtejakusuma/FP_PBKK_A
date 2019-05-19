@@ -17,7 +17,7 @@ drop table if exists DISCOUNTS;
 /*==============================================================*/
 /* Table: DISCOUNTS                                             */
 /*==============================================================*/
-create table DISCOUNTS
+create table if not exists DISCOUNTS
 (
    id          			int not null auto_increment,
    description 			varchar(50) not null,
@@ -31,7 +31,7 @@ create table DISCOUNTS
 /*==============================================================*/
 /* Table: OPENING_HOURSS                                 */
 /*==============================================================*/
-create table OPENING_HOURS
+create table if not exists OPENING_HOURS
 (
    id 				    int not null auto_increment,
    day                  numeric(1,0) not null,
@@ -45,7 +45,7 @@ create table OPENING_HOURS
 /*==============================================================*/
 /* Table: TOUR_LOCATIONS                                        */
 /*==============================================================*/
-create table TOUR_LOCATIONS
+create table if not exists TOUR_LOCATIONS
 (
    id 			        int not null auto_increment,
    name                 varchar(50) not null,
@@ -60,7 +60,7 @@ create table TOUR_LOCATIONS
 /*==============================================================*/
 /* Table: ORDERS                                                */
 /*==============================================================*/
-create table ORDERS
+create table if not exists ORDERS
 (
    user_id              int not null,
    tour_location_id     int not null,
@@ -71,7 +71,7 @@ create table ORDERS
 /*==============================================================*/
 /* Table: USERS                                                 */
 /*==============================================================*/
-create table USERS
+create table if not exists USERS
 (
    id         	        int not null auto_increment,
    discount_id          int default null,

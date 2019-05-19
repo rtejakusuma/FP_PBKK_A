@@ -8,4 +8,10 @@ public interface TourService {
 
 	public List<Tour> getTours();
 	
+	public void saveTour(Tour theTour);
+	
+	public Tour getTour(int theId);
+	
+	public void deleteTour(int theId);
+	
 }

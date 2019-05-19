@@ -9,4 +9,5 @@ public interface UserDAO {
 	public User getUser(int theId);
 	public void saveUser(User theUser);
 	public void deleteUser(int theId);
+	public boolean checkDuplicates(String username, String email);
 }

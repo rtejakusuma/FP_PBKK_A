@@ -39,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
 		
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
+	
 		// save the user
 		currentSession.saveOrUpdate(theUser);
 	}
@@ -69,4 +69,23 @@ public class UserDAOImpl implements UserDAO {
 		theQuery.executeUpdate();
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override
+	public boolean checkDuplicates(String username, String email) {
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query theQuery = currentSession.createSQLQuery("select * from users "
+				+ "where username=:username or email=:email")
+				.setParameter("username", username)
+				.setParameter("email", email);
+		
+		List result = theQuery.getResultList();
+		System.out.println(result);
+		if(result.size() > 0) return true;
+		else return false;
+	}
+
+	
+	
 }
