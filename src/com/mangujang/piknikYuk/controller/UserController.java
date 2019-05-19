@@ -7,6 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Objects;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -136,5 +138,48 @@ public class UserController {
 		theModel.addFlashAttribute("delete_flag", 1);
 		
 		return "redirect:/user/list";
+	}
+		
+	@PostMapping("/checkUser")
+	public String checkUser(User user, HttpSession httpSession, Model model) {
+		String page ="redirect:checkHome";
+		
+		User result = userService.getUserLogin(user);
+		
+		if(result == null) {
+			model.addAttribute("error", "akun tidak ditemukan");
+			return "redirect:login-user";
+		}
+		
+		httpSession.setAttribute("user", result);
+		
+		return page;
+	}
+		
+	@GetMapping("/checkHome")
+	public String homeUser(User user, Model model, HttpSession httpSession) {
+		User username = (User) httpSession.getAttribute("user");
+		//System.out.println(result.getRole());
+		System.out.println(username);
+		if(username.getRole() == 0) {
+			
+			return "redirect:homeUser";
+		}
+		else if(username.getRole() == 1) {
+			return "redirect:homeAdmin";
+		}
+		
+		model.addAttribute("error", "login terlebih dahulu");
+		return "redirect:login-user";
+	}
+	
+	@GetMapping("/homeAdmin")
+	public String homeAdmin() {
+		return "user/homeAdmin";
+	}
+	
+	@GetMapping("/homeUser")
+	public String homeUser() {
+		return "user/homeUser";
 	}
 }

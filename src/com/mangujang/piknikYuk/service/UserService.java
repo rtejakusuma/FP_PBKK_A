@@ -11,4 +11,5 @@ public interface UserService {
 	public void saveUser(User theUser);
 	public void deleteUser(int theId);
 	public boolean checkDuplicates(String username, String email);
+	public User getUserLogin(User user);
 }
