@@ -47,4 +47,11 @@ public class UserServiceImpl implements UserService {
 		return userDAO.checkDuplicates(username, email);
 	}
 
+	@Override
+	@Transactional
+	public User getUserLogin(User user) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserLogin(user);
+	}
+
 }

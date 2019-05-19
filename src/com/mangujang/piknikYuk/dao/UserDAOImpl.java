@@ -2,6 +2,8 @@ package com.mangujang.piknikYuk.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -84,6 +86,27 @@ public class UserDAOImpl implements UserDAO {
 		System.out.println(result);
 		if(result.size() > 0) return true;
 		else return false;
+	}
+
+	@Override
+	public User getUserLogin(User user) {
+		// TODO Auto-generated method stub
+		//get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		User result = null;
+		String hql = "from User where username=:username and password=:password";
+		
+		Query<User> query = currentSession.createQuery(hql);
+		query.setParameter("username", user.getUsername());
+		query.setParameter("password", user.getPassword());
+		
+		try {
+			result = query.getSingleResult();
+		} catch (NoResultException e) {
+			
+		}
+			
+		return result;
 	}
 
 	
