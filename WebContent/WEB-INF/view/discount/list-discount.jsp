@@ -2,19 +2,60 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Daftar Promo</title>
-	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-	<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
-	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>	
+	<link href="${pageContext.request.contextPath}/resources/discount/loading1.css"rel="stylesheet" id="bootstrap-css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/discount/load1.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/discount/header.css" rel="stylesheet">
+	
 </head>
-<body>
-	<div class="center-items">
+
+<div class="menulist">
+      <ul>
+          <li><a href="../tour/list">Obyek Wisata</a></li>
+          <li><a class="pindah1" href="">Promo</a></li>
+          <li><a class="pindah1" href="Status/status.html">Status</a></li>
+          <div style="float:right;">
+	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
+            </div>
+      </ul>
+  </div>
+<!-- Team -->
+<section id="team" class="pb-7">
+    <div class="container">
+        <c:if test="${role == 0 }">
+        	<h5 class="section-title h1"><strong>PROMOMU!</strong></h5>
+        	</c:if>
+        <c:if test="${role == 1 }">
+        	<h5 class="section-title h1"><strong>List Promo!</strong></h5>
+        </c:if>
+        <div class="row">
+        	<c:if test="${role == 0 }">
+	            <!-- Team member -->
+				<c:forEach var="discount" items="${discounts}">
+	            <div class="">
+	                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+	                    <div class="mainflip">
+	                        <div class="frontside">
+	                            <div class="card">
+	                               <p><img class=" img-fluid" src="${pageContext.request.contextPath}/resources/discount/aset-promo.jpg" ></p>
+	                            </div>
+	                        </div>
+	                        <div class="backside">
+	                            <div class="cardback text-center">
+	                                    <h4 class="card-title"><strong>${discount.code}</strong></h4>
+	                                    <p class="card-text">Dapatkan diskon sebesar </p>
+										<h1><strong>${discount.discountValue}%</strong></h1>
+										<p class="card-text">${discount.startTime} sampai ${discount.endTime}</p>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+				</c:forEach>
+			</c:if>
+			<c:if test="${role == 1 }">
+				<div class="center-items">
 		<c:if test="${delete_flag == 1 }">
 			<script>
 				Swal.fire(
@@ -24,7 +65,6 @@
 				);
 			</script>
 		</c:if>
-	    <h2>Daftar Promo</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
 	    	<a href="addDiscountForm">
 	    		<button class="btn btn-primary">Tambahkan Promo</button>
@@ -75,26 +115,8 @@
 	    	</a>
 	    </div>	    	
     </div>	
-</body>
-<script>
-	function confirm(id){
-		swal.fire({
-			title: 'Yakin ingin menghapus data promo?',
-			text: "Data yang dihapus tidak dapat kembali",
-			type: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yakin, hapus data',
-			cancelButtonText: 'Tidak, kembali',
-			allowOutsideClick: false,
-            allowEscapeKey: false,
-            allowEnterKey: false
-		}).then((result) => {
-			if(result.value) {
-		  		window.location.href = "${deleteLink}?discountId="+id; 		
-			}
-		});
-	}
-</script>
-</html>
+			</c:if>
+        </div>
+    </div>
+</section>
+<!-- Team -->

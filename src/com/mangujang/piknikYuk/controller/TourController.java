@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mangujang.piknikYuk.model.OpeningHour;
 import com.mangujang.piknikYuk.model.Tour;
+import com.mangujang.piknikYuk.model.User;
 import com.mangujang.piknikYuk.service.OpeningService;
 import com.mangujang.piknikYuk.service.TourService;
 
@@ -33,13 +36,18 @@ public class TourController {
 	private TourService tourService;
 	
 	@GetMapping("/list")
-	public String listTour(Model theModel) {
-		
+	public String listTour(User user, Model theModel, HttpSession httpSession) {
+		User username = (User) httpSession.getAttribute("user");
+		if(username == null) {
+			theModel.addAttribute("error", "login terlebih dahulu");
+			return "redirect:../login";
+		}
 		// inject tourService
 		List<Tour> theTours = tourService.getTours();
 		
 		// add tour to theModel
 		theModel.addAttribute("tours", theTours);
+		theModel.addAttribute("role", username.getRole());
 		
 		// load jsp page
 		return "tour/list-tour";

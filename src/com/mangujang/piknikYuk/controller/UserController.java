@@ -162,24 +162,16 @@ public class UserController {
 		//System.out.println(result.getRole());
 		System.out.println(username);
 		if(username.getRole() == 0) {
-			
-			return "redirect:homeUser";
+			model.addAttribute("role", username.getRole());
+			return "home";
 		}
 		else if(username.getRole() == 1) {
-			return "redirect:homeAdmin";
+			model.addAttribute("role", username.getRole());
+			return "home";
 		}
 		
 		model.addAttribute("error", "login terlebih dahulu");
 		return "redirect:login-user";
 	}
-	
-	@GetMapping("/homeAdmin")
-	public String homeAdmin() {
-		return "user/homeAdmin";
-	}
-	
-	@GetMapping("/homeUser")
-	public String homeUser() {
-		return "user/homeUser";
-	}
+
 }

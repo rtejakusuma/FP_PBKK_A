@@ -6,13 +6,22 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
 	<title>Tambah Opening Hour</title>
 	<link href="${pageContext.request.contextPath}/resources/open/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="${pageContext.request.contextPath}/resources/open/css/material-bootstrap-wizard.css" rel="stylesheet" />		
+	<link href="${pageContext.request.contextPath}/resources/open/css/material-bootstrap-wizard.css" rel="stylesheet" />
+	
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link href="${pageContext.request.contextPath}/resources/open/css/demo.css" rel="stylesheet" />		
 </head>
 <body>
 	<div class="image-container set-full-height" style="background-image: url('${pageContext.request.contextPath}/resources/open/img/background.jpg')">
-	    <h2>Tambah Opening Hour</h2>
 	    <!--   Big container   -->
 	    <div class="container">
 	        <div class="row">
@@ -25,9 +34,8 @@
 	    						<form:hidden path="tourLocation" value="${param.id }" />
 		                    	<div class="wizard-header">
 		                        	<h3 class="wizard-title">
-		                        		Book a Room
+		                        		Tambah Jam Buka
 		                        	</h3>
-									<h5>This information will let us know more about you.</h5>
 		                    	</div>
 								<div class="wizard-navigation">
 									<ul>

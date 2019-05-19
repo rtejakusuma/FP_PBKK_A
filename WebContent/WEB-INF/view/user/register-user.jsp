@@ -41,7 +41,7 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
-						<form:input cssClass="input100" type="text" path="email" placeholder="Email" />
+						<form:input cssClass="input100" type="email" path="email" placeholder="Email" />
 						<span class="focus-input100" data-placeholder="&#x2709;"></span>
 					</div>
 

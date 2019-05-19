@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mangujang.piknikYuk.model.Discount;
+import com.mangujang.piknikYuk.model.User;
 import com.mangujang.piknikYuk.service.DiscountService;
 
 @Controller
@@ -37,12 +40,17 @@ public class DiscountController {
 	}
 	
 	@GetMapping("/list")
-	public String listDiscount(Model theModel) {
-		
+	public String listDiscount(User user, Model theModel, HttpSession httpSession) {
+		User username = (User) httpSession.getAttribute("user");
+		if(username == null) {
+			theModel.addAttribute("error", "login terlebih dahulu");
+			return "redirect:../login";
+		}
 		// inject discountService
 		List<Discount> theDiscounts = discountService.getDiscounts();
 		
 		//add tour to theModel
+		theModel.addAttribute("role", username.getRole());
 		theModel.addAttribute("discounts", theDiscounts);
 		
 		//load the page
