@@ -14,25 +14,30 @@
 	<div class="center-items">
 	    <h2>Tambah Opening Hour</h2>
 	    <div id="container">
-	    	<form:form action="open-saveOpening" modelAttribute="opening" method="POST">
+	    	<form:form action="open-save" modelAttribute="opening" method="POST">
 	    		<form:hidden path="id" />
+	    		<form:hidden path="tourLocation" value="${param.id }" />
 	    		<table>
 	    			<tbody>
 	    				<tr>
 	    					<td><label>Hari:</label></td>
-	    					<td><form:input path="day" /></td>
+	    					<td>
+								<form:select path="day" items="${days}" />	    	
+						    </td>				
 	    				</tr>
 	    				<tr>
 	    					<td><label>Waktu Buka:</label></td>
-	    					<td><form:input path="openTime" /></td>
+	    					<td><form:input pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" 
+	    						title="Format 24-jam! (HH:mm)" 
+	    						path="openTime"/>
+	    					</td>
 	    				</tr>
 	    				<tr>
 	    					<td><label>Waktu Tutup:</label></td>
-	    					<td><form:input path="closeTime" /></td>
-	    				</tr>
-	    				<tr>
-	    					<td><label>Lokasi Wisata:</label></td>
-	    					<td><form:input path="tourLocation" /></td>
+	    					<td><form:input pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" 
+	    						title="Format 24-jam! (HH:mm)" 
+	    						path="closeTime"/>
+	    					</td>
 	    				</tr>
 	    				<tr>
 	    					<td><label></label></td>
@@ -52,4 +57,11 @@
 	    </div>	 
     </div>	
 </body>
+<script>
+window.onload = function(){
+	document.getElementById("openTime").setAttribute("required", "");
+	document.getElementById("closeTime").setAttribute("required", "");
+	document.getElementById("tourLocation").setAttribute("required", "");
+};
+</script>
 </html>

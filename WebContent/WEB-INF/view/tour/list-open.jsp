@@ -17,7 +17,11 @@
 	<div class="center-items">
 	    <h2>List Opening Hour</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    <a href="open-addOpenForm?openingId="+${item[0]}>
+	    <!-- set update url  -->
+		<c:url var="addLink" value="/tour/open-addForm">
+			<c:param name="id" value="${opening[0][4]}" />
+		</c:url>
+	    <a href="${addLink }">
 	    	<button class="btn btn-primary">Tambahkan Opening Hour</button>
 	    </a>
 	    </div>
@@ -28,10 +32,11 @@
 					<th scope="col">Hari</th>
 					<th scope="col">Waktu Buka</th>
 					<th scope="col">Waktu Tutup</th>	
-					<th scope="col">Lokasi Wisata</th>				
+					<th scope="col">Lokasi Wisata</th>
+					<th scope="col">Aksi</th>				
 				</tr>
 			</thead>
-			<c:forEach var="item" items="${opening}">
+			<c:forEach var="item" items="${opening}" varStatus="loop">
 				<!-- set update url  -->
 				<c:url var="updateLink" value="/tour/open-updateOpeningForm">
 					<c:param name="openingId" value="${item[0]}" />
@@ -42,7 +47,7 @@
 				<tbody>
 					<tr>
 						<td style="width: 15%">${item[0]}</td>
-						<td style="width: 15%">${item[1]}</td>
+						<td style="width: 15%">${days.get(item[1]-1)}</td>
 						<td style="width: 15%">${item[2]}</td>
 						<td style="width: 15%">${item[3]}</td>
 						<td style="width: 15%">${item[4]}</td>

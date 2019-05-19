@@ -25,20 +25,18 @@ public class TourServiceImpl implements TourService {
 	@Override
 	@Transactional
 	public void saveTour(Tour theTour) {
-		// TODO Auto-generated method stub
 		tourDAO.saveTour(theTour);
 	}
 
 	@Override
 	@Transactional
 	public Tour getTour(int theId) {
-		// TODO Auto-generated method stub
 		return tourDAO.getTour(theId);
 	}
 
 	@Override
+	@Transactional
 	public void deleteTour(int theId) {
-		// TODO Auto-generated method stub
 		tourDAO.deleteTour(theId);
 	}
 

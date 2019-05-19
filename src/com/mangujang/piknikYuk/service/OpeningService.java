@@ -7,7 +7,7 @@ import com.mangujang.piknikYuk.model.OpeningHour;
 public interface OpeningService {
 	public List<OpeningHour> getOpening(int id);
 	
-	public void saveOpening(OpeningHour theOpening);
+	public void saveOpening(OpeningHour theOpening, int tourId);
 	
 	public OpeningHour getOpenings(int id);
 	

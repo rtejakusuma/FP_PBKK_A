@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mangujang.piknikYuk.model.OpeningHour;
+import com.mangujang.piknikYuk.model.Tour;
 
 @Repository
 public class OpeningDAOImpl implements OpeningDAO {
@@ -36,10 +37,13 @@ public class OpeningDAOImpl implements OpeningDAO {
 	}
 
 	@Override
-	public void saveOpening(OpeningHour theOpening) {
-		// TODO Auto-generated method stub
+	public void saveOpening(OpeningHour theOpening, int tourId) {
 		//get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Tour tempTour = currentSession.get(Tour.class, tourId);
+		
+		tempTour.add(theOpening);
 		
 		//save/update the discout
 		currentSession.saveOrUpdate(theOpening);
