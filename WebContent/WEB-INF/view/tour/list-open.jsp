@@ -17,7 +17,11 @@
 	<div class="center-items">
 	    <h2>List Opening Hour</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
-	    <a href="open-addOpenForm?openingId="+${item[0]}>
+	    <!-- set update url  -->
+		<c:url var="addLink" value="/tour/open-addForm">
+			<c:param name="id" value="${opening[0][4]}" />
+		</c:url>
+	    <a href="${addLink }">
 	    	<button class="btn btn-primary">Tambahkan Opening Hour</button>
 	    </a>
 	    </div>

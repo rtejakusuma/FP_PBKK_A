@@ -153,7 +153,6 @@ public class TourController {
 			) throws ParseException {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 		openTime  = openTime.concat(":00");
 		closeTime = closeTime.concat(":00");
 		
