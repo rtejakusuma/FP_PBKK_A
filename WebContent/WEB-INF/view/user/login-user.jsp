@@ -34,7 +34,7 @@
 						</div>
 	
 						<div class="wrap-input100 validate-input" data-validate="Enter password">
-							<form:input path="password" type="text" class="input100" placeholder="Password"></form:input>
+							<form:input path="password" type="password" class="input100" placeholder="Password"></form:input>
 							<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 						</div>
 	
