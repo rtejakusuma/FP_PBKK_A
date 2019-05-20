@@ -20,8 +20,22 @@ Aplikasi **‘PiknikYuk!’** merupakan sebuah aplikasi berbasis website yang me
 
 ## Rencana Tampilan Web
 **Register**
-![mockup register](https://user-images.githubusercontent.com/33054425/56188470-cd074780-604f-11e9-97aa-c3f4e00f31b3.jpg)
+![register](https://user-images.githubusercontent.com/32433590/58006149-9373a180-7b11-11e9-9a48-da78e552df75.PNG)
 **Login**
-![mockup login](https://user-images.githubusercontent.com/33054425/56188479-d395bf00-604f-11e9-9d41-6570b773959b.jpg)
-**Home (Sebelum Login)**
-![mockup home](https://user-images.githubusercontent.com/33054425/56188488-d7c1dc80-604f-11e9-9532-25e778be07f8.jpg)
+![login](https://user-images.githubusercontent.com/32433590/58006202-b2723380-7b11-11e9-8760-18edd3e459c5.PNG)
+**Home**
+![home](https://user-images.githubusercontent.com/32433590/58006218-c4ec6d00-7b11-11e9-85d0-8bf0cc09b9c2.PNG)
+**Home Admin**
+![homeAdmin](https://user-images.githubusercontent.com/32433590/58006221-c4ec6d00-7b11-11e9-9fce-e3a840c39431.PNG)
+**Objek Wisata Admin**
+![ow_admin](https://user-images.githubusercontent.com/32433590/58006225-c61d9a00-7b11-11e9-9abe-ded08e43bc45.PNG)
+**Promo Admin**
+![list_admin](https://user-images.githubusercontent.com/32433590/58006224-c5850380-7b11-11e9-92a3-27178cc32266.PNG)
+**User Admin**
+![user](https://user-images.githubusercontent.com/32433590/58006228-c6b63080-7b11-11e9-8f1c-4b7369e1d74e.PNG)
+**Home User**
+![homeUser](https://user-images.githubusercontent.com/32433590/58006223-c5850380-7b11-11e9-8bf5-1cc9d2aa976c.PNG)
+**Objek Wisata User**
+![ow_user](https://user-images.githubusercontent.com/32433590/58006226-c61d9a00-7b11-11e9-8029-f800f1e84adb.PNG)
+**Promo User**
+![prmo](https://user-images.githubusercontent.com/32433590/58006227-c61d9a00-7b11-11e9-9730-0eaa9ace63ee.PNG)
