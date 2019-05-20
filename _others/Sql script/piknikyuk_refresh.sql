@@ -35,8 +35,8 @@ create table if not exists OPENING_HOURS
 (
    id 				    int not null auto_increment,
    day                  numeric(1,0) not null,
-   open_time            time not null,
-   close_time           time not null,
+   open_time            char(9) not null,
+   close_time           char(9) not null,
    tour_location_id		int default null,
    primary key (id)
 );
@@ -120,6 +120,18 @@ INSERT INTO `discounts` (`description`, `code`, `discount_value`, `start_time`, 
 ('PiknikYuk Promo #1', 'PYPROMO1', '50', '2019-03-01', '2019-03-31'),
 ('PiknikYuk Promo #2', 'PYPROMO2', '15', '2019-04-01', '2019-04-30'),
 ('PiknikYuk Promo #3', 'PYPROMO3', '20', '2019-05-01', '2019-05-31');
+
+/*==============================================================*/
+/* Dumping data for table `opening_hours`*/
+/*==============================================================*/
+INSERT INTO `opening_hours` (`id`, `day`, `open_time`, `close_time`, `tour_location_id`) VALUES
+('1', '1', '00:00', '10:00', '1'),
+('2', '2', '00:00', '10:00', '1'),
+('3', '3', '00:00', '10:00', '1'),
+('4', '4', '00:00', '10:00', '1'),
+('5', '5', '00:00', '10:00', '1'),
+('6', '6', '00:00', '10:00', '1'),
+('7', '7', '00:00', '10:00', '1');
 
 
 /*==============================================================*/

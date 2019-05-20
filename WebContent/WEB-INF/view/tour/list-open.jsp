@@ -15,14 +15,14 @@
 </head>
 <body>
 	<div class="center-items">
-	    <h2>List Opening Hour</h2>
+	    <h2>Jam Buka ${opening[0].tourLocation.name }</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
 	    <!-- set update url  -->
 		<c:url var="addLink" value="/tour/open-addForm">
-			<c:param name="id" value="${opening[0][4]}" />
+			<c:param name="id" value="${tour.id}" />
 		</c:url>
 	    <a href="${addLink }">
-	    	<button class="btn btn-primary">Tambahkan Opening Hour</button>
+	    	<button class="btn btn-primary">Atur Jam Buka</button>
 	    </a>
 	    </div>
 	    <table class="table table-bordered table-dark">
@@ -31,39 +31,23 @@
 					<th scope="col">#</th>
 					<th scope="col">Hari</th>
 					<th scope="col">Waktu Buka</th>
-					<th scope="col">Waktu Tutup</th>	
-					<th scope="col">Lokasi Wisata</th>
-					<th scope="col">Aksi</th>				
+					<th scope="col">Waktu Tutup</th>			
 				</tr>
 			</thead>
-			<c:forEach var="item" items="${opening}" varStatus="loop">
-				<!-- set update url  -->
-				<c:url var="updateLink" value="/tour/open-updateOpeningForm">
-					<c:param name="openingId" value="${item[0]}" />
-				</c:url>
-				<!-- set delete url  -->
-				<c:url var="deleteLink" value="/tour/deleteOpening"></c:url>
-						
-				<tbody>
+			<c:forEach var="item" items="${opening}" varStatus="loop"><tbody>
 					<tr>
-						<td style="width: 15%">${item[0]}</td>
-						<td style="width: 15%">${days.get(item[1]-1)}</td>
-						<td style="width: 15%">${item[2]}</td>
-						<td style="width: 15%">${item[3]}</td>
-						<td style="width: 15%">${item[4]}</td>
-						<td>
-							<a title='Update opening' href="${updateLink}">
-								<button class="btn btn-primary">Ubah</button>
-							</a>
-							<a title='Delete opening' onclick="confirm('${item[0]}')">
-								<button class="btn btn-danger">Hapus</button>
-							</a>
-						</td>
+						<td style="width: 15%">${loop.index+1}</td>
+						<td style="width: 15%">${days.get(loop.index)}</td>
+						<td style="width: 15%">${item.openTime}</td>
+						<td style="width: 15%">${item.closeTime}</td>
 					</tr>
 				</tbody>
 			</c:forEach>			
 	    </table>
 	    <div class="col-3-md" style="float: right; margin: 16px 0;">
+	    	<a href="${pageContext.request.contextPath}/tour/list">
+	    		<button class="btn btn-primary">Daftar Wisata</button>
+	    	</a>
 	    	<a href="${pageContext.request.contextPath}/home">
 	    		<button class="btn btn-primary">Beranda</button>
 	    	</a>

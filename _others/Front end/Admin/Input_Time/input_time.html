@@ -27,7 +27,7 @@
 		            <!--      Wizard container        -->
 		            <div class="wizard-container">
 		                <div class="card wizard-card" data-color="red" id="wizard">
-		                    <form action="" method="">
+		                    <form:form action="${saveOpenHour}" modelAttribute="form"  method="POST">	
 		                <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
 
 		                    	<div class="wizard-header">
@@ -58,7 +58,9 @@
 													</span>
 													<div class="form-group label-floating">
 			                                          	<label class="control-label">Start Hour</label>
-			                                          	<input name="name" type="text" class="form-control">
+			                                          	<form:hidden path="openings[${i.index}].id"/>
+			                                          	<form:hidden path="openings[${i.index}].day"/>
+			                                          	<form:input path="openings[${i.index}].openTime" cssClass="form-control"/>
 			                                        </div>
 												</div>
 
@@ -68,7 +70,7 @@
 													</span>
 													<div class="form-group label-floating">
 			                                          	<label class="control-label">Finish Hour</label>
-			                                          	<input name="name" type="text" class="form-control">
+			                                          	<form:input path="openings[${i.index}].closeTime" cssClass="form-control"/>
 			                                        </div>
 												</div>
 
