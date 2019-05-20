@@ -25,9 +25,9 @@ public class OpeningServiceImpl implements OpeningService {
 
 	@Override
 	@Transactional
-	public void saveOpening(OpeningHour theOpening, int tourId) {
+	public void saveOpening(OpeningHour theOpening, int tourId, int flag) {
 		// TODO Auto-generated method stub
-		openingDAO.saveOpening(theOpening, tourId);
+		openingDAO.saveOpening(theOpening, tourId, flag);
 	}
 
 	@Override
@@ -42,6 +42,13 @@ public class OpeningServiceImpl implements OpeningService {
 	public void deleteOpening(int id) {
 		// TODO Auto-generated method stub
 		openingDAO.deleteOpening(id);
+	}
+
+	@Override
+	@Transactional
+	public OpeningHour getIndex() {
+		// TODO Auto-generated method stub
+		return openingDAO.getIndex();
 	}
 
 }

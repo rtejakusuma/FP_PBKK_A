@@ -1,13 +1,7 @@
 package com.mangujang.piknikYuk.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mangujang.piknikYuk.model.OpeningForm;
 import com.mangujang.piknikYuk.model.OpeningHour;
 import com.mangujang.piknikYuk.model.Tour;
 import com.mangujang.piknikYuk.service.OpeningService;
@@ -110,9 +105,14 @@ public class TourController {
 		days.add("Minggu");
 		theModel.addAttribute("days", days);
 		
+		//get tour data from db
+		Tour theTour = tourService.getTour(tourId);
+		
+		//set tour data to the model
+		theModel.addAttribute("tour", theTour);
+		
 		//inject openingSercive
 		List<OpeningHour> theOpening = openingService.getOpening(tourId);
-		System.out.println(openingService.getOpening(tourId));
 		
 		//add tour to the model
 		theModel.addAttribute("opening", theOpening);
@@ -121,51 +121,72 @@ public class TourController {
 		return "tour/list-open";
 		
 	}
+	// global
+	int flag;
 	
 	@GetMapping("/open-addForm")
 	public String showOpenForm(
 			Model theModel,
 			@RequestParam("id") int tourId
 			) {
-		Map<String, String> days = new LinkedHashMap<String, String>();
-		days.put("1", "Senin");
-		days.put("2", "Selasa");
-		days.put("3", "Rabu");
-		days.put("4", "Kamis");
-		days.put("5", "Jumat");
-		days.put("6", "Sabtu");
-		days.put("7", "Minggu");
-		theModel.addAttribute("days", days);
+
+		List<OpeningHour> theOpening = new ArrayList<OpeningHour>();
 		
-		OpeningHour theOpening = new OpeningHour();
-		theModel.addAttribute("opening", theOpening);
+		theOpening = openingService.getOpening(tourId);
+		System.out.print(theOpening);
+		if(theOpening.isEmpty()) {
+			String start = "00:00";
+			String end = "23:59";
+			
+			OpeningHour op = openingService.getIndex();
+			System.out.println(op);
+			if(op == null) {
+				flag = 0;
+				System.out.println("cek2");
+				theOpening.add(new OpeningHour(1, 1, start, end));
+				theOpening.add(new OpeningHour(2, 2, start, end));
+				theOpening.add(new OpeningHour(3, 3, start, end));
+				theOpening.add(new OpeningHour(4, 4, start, end));
+				theOpening.add(new OpeningHour(5, 5, start, end));
+				theOpening.add(new OpeningHour(6, 6, start, end));
+				theOpening.add(new OpeningHour(7, 7, start, end));	
+			} else {
+				System.out.println("cek");
+				flag = 0;
+				theOpening.add(new OpeningHour(op.getId()+1, 1, start, end));
+				theOpening.add(new OpeningHour(op.getId()+2, 2, start, end));
+				theOpening.add(new OpeningHour(op.getId()+3, 3, start, end));
+				theOpening.add(new OpeningHour(op.getId()+4, 4, start, end));
+				theOpening.add(new OpeningHour(op.getId()+5, 5, start, end));
+				theOpening.add(new OpeningHour(op.getId()+6, 6, start, end));
+				theOpening.add(new OpeningHour(op.getId()+7, 7, start, end));	
+			}
+			System.out.println("Asu");			
+		} else {
+			flag = 1;
+		}
+		
+		OpeningForm form = new OpeningForm();
+		form.setOpenings(theOpening);
+		theModel.addAttribute("form", form);
+		theModel.addAttribute("tourId", tourId);
 		
 		return "tour/form-open";
 	}
 	
 	@PostMapping("/open-save")
 	public String saveOpening(
-			@RequestParam("id") int id,
-			@RequestParam("day") int day,
-			@RequestParam("openTime") String openTime,
-			@RequestParam("closeTime") String closeTime,
-			@RequestParam("tourLocation") int tourId
-			) throws ParseException {
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-		openTime  = openTime.concat(":00");
-		closeTime = closeTime.concat(":00");
-		
-		Date open = sdf.parse(openTime);
-		Date close = sdf.parse(closeTime);
-		
-		OpeningHour opening = new OpeningHour();
-		
-		opening.setDay(day);
-		opening.setOpenTime(open);
-		opening.setCloseTime(close);
-		
-		openingService.saveOpening(opening, tourId);
+			@ModelAttribute("form") OpeningForm form,
+			@RequestParam("id") int tourId
+			) {
+//		System.out.println(form);
+//		System.out.println(form.getOpenings());
+		List<OpeningHour> theOpening = new ArrayList<OpeningHour>();
+		theOpening = form.getOpenings();
+		System.out.println(">> "+flag);
+		for(int i=0; i<7; i++) {
+			openingService.saveOpening(theOpening.get(i), tourId, flag);
+		}
 		
 		return "redirect:/tour/open-list?id="+tourId;
 	}

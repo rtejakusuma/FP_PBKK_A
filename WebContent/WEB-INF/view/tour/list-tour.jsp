@@ -40,7 +40,7 @@
 				<c:url var="deleteLink" value="/tour/delete"></c:url>
 				
 				<!-- set open hour url  -->
-				<c:url var="openHour" value="/tour/open-addForm">
+				<c:url var="openHour" value="/tour/open-list">
 					<c:param name="id" value="${tour.id}" />
 				</c:url>
 				
