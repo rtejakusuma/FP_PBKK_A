@@ -12,8 +12,33 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 	<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
 	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>	
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">	
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/wisatauser/all.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep1.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/discount/header.css" rel="stylesheet" type="text/css">	
 </head>
 <body>
+<div class="menulist">
+      <ul>
+          <li><a href="../tour/list">Obyek Wisata</a></li>
+          <li><a class="pindah1" href="../discount/list">Promo</a></li>
+          <li><a class="pindah1" href="../user/list">User</a></li>
+          <div style="float:right;">
+	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
+            </div>
+      </ul>
+  </div>
+<!-- Team -->
+<section id="team" class="pb-7">
+    <div class="container">
 	<div class="center-items">
 	    <h2>Jam Buka ${opening[0].tourLocation.name }</h2>
 	    <div class="col-3-md" style="text-align: left; margin-bottom: 16px;">
@@ -53,6 +78,8 @@
 	    	</a>
 	    </div>
     </div>	
+    </div>
+    </section>
 </body>
 <script>
 	function confirm(id){

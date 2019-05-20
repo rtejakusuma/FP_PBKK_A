@@ -13,7 +13,7 @@
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/all.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep1.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/wisatauser/header.css" rel="stylesheet" type="text/css">	
+	<link href="${pageContext.request.contextPath}/resources/discount/header.css" rel="stylesheet" type="text/css">	
 </head>
 <body>
 <div class="menulist">

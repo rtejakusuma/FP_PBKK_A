@@ -74,7 +74,11 @@ public class UserController {
 			) {
 		// check password
 		String tempPass = theUser.getPassword();
-		if(!tempPass.equals(tempConfirm)) {
+		System.out.println(tempConfirm);
+		if(tempConfirm.equals("0") ) {
+			System.out.println("hehe");
+		}
+		else if(!tempPass.equals(tempConfirm)) {
 			theModel.addFlashAttribute("error", "Password tidak sesuai");
 			return "redirect:/user/addUserForm";
 		}
@@ -110,10 +114,13 @@ public class UserController {
 		// check dupes
 		boolean anyDupes = userService.checkDuplicates(theUser.getUsername(), theUser.getEmail());
 		System.out.println(anyDupes);
-		if(!anyDupes) {
+		if(!anyDupes && tempConfirm.equals("0")) {
 			//save the customer using our service
 			userService.saveUser(theUser);
-			return "home";
+			return "redirect:list";
+		} else if(!anyDupes) {
+			userService.saveUser(theUser);
+			return "redirect:/login";
 		}
 		else {
 			theModel.addFlashAttribute("error", "Nama pengguna atau "

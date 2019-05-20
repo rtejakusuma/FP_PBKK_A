@@ -121,6 +121,7 @@ public class TourController {
 		
 		//inject openingSercive
 		List<OpeningHour> theOpening = openingService.getOpening(tourId);
+		System.out.println(theTour);
 		
 		//add tour to the model
 		theModel.addAttribute("opening", theOpening);

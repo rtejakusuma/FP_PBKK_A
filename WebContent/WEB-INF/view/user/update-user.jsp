@@ -24,7 +24,7 @@
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/all.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep1.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/wisatauser/header.css" rel="stylesheet" type="text/css">	
+	<link href="${pageContext.request.contextPath}/resources/discount/header.css" rel="stylesheet" type="text/css">	
 	
 </head>
 <body>
@@ -46,7 +46,7 @@
 		<br>
 		<div class="grid-container">
 			<div></div>
-			<form:form method="POST" action="saveUser" modelAttribute="user">
+			<form:form method="POST" action="saveUser?password_confirm=0" modelAttribute="user">
 				<form:hidden path="id" />
 				<div class="form-group row">					
 				    <form:label path="username">Nama Pengguna  <form:errors path="username" cssClass="error"/></form:label>				    
