@@ -44,7 +44,7 @@ public class HomeController {
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession httpSession, Model model) {
-		if(httpSession.getAttribute("user") != null) {
+		if(httpSession.getAttribute("user") != null || httpSession.getAttribute("role") != null) {
 			httpSession.setAttribute("user", null);
 			httpSession.setAttribute("role", null);
 		}

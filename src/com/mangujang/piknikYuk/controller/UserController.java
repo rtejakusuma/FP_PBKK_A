@@ -118,7 +118,7 @@ public class UserController {
 		// check dupes
 		boolean anyDupes = userService.checkDuplicates(theUser.getUsername(), theUser.getEmail());
 		System.out.println(anyDupes);
-		if(!anyDupes && tempConfirm.equals("0")) {
+		if(anyDupes && tempConfirm.equals("0")) {
 			//save the customer using our service
 			userService.saveUser(theUser);
 			return "redirect:list";
