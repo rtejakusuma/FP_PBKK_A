@@ -21,6 +21,7 @@
 <body>
 <div class="menulist">
       <ul>
+      <li><a href="${pageContext.request.contextPath}/home">Beranda</a></li>
           <li><a href="../tour/list">Obyek Wisata</a></li>
           <li><a class="pindah1" href="../discount/list">Promo</a></li>
           <li><a class="pindah1" href="../user/lists">User</a></li>
@@ -70,9 +71,7 @@
 		    	<a href="${pageContext.request.contextPath}/discount/list">
 		    		<button class="btn btn-primary">Daftar Promo</button>
 		    	</a>
-		    	<a href="${pageContext.request.contextPath}/home">
-		    		<button class="btn btn-primary">Beranda</button>
-		    	</a>
+		    	
 		    </div>	 
 	    </div>	
 		</div>

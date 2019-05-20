@@ -39,7 +39,9 @@
 						</div>
 	
 						<div class="container-login100-form-btn m-t-32">
-							<input type="submit" value="Submit">
+							<button class="login100-form-btn">
+								Kirim
+							</button>
 						</div>
 				</form:form>
 			</div>

@@ -56,6 +56,7 @@
   <c:if test="${role == 1 }">
   <div class="menulist">
         <ul>
+        	<li><a href="${pageContext.request.contextPath}/home">Beranda</a></li>
             <li><a href="${pageContext.request.contextPath}/tour/list">Obyek Wisata</a></li>
             <li><a href="${pageContext.request.contextPath}/discount/list">Promo</a></li>
             <li><a href="${pageContext.request.contextPath}/user/list">Users</a></li>

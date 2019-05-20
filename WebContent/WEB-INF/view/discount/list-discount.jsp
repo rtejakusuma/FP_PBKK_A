@@ -27,6 +27,7 @@
 <c:if test="${role == 1 }">
 <div class="menulist">
       <ul>
+     	 <li><a href="${pageContext.request.contextPath}/home">Beranda</a></li>
           <li><a href="../tour/list">Obyek Wisata</a></li>
           <li><a class="pindah1" href="">Promo</a></li>
           <li><a class="pindah1" href="../user/list">User</a></li>
@@ -126,9 +127,7 @@
 			</c:forEach>
 	    </table>
 	    <div class="col-3-md" style="float: right; margin: 16px 0;">
-	    	<a href="${pageContext.request.contextPath}/home">
-	    		<button class="btn btn-primary">Beranda</button>
-	    	</a>
+	    	
 	    </div>	    	
     </div>	
 			</c:if>

@@ -67,7 +67,7 @@ public class UserController {
 		theModel.addAttribute("user", theUser);
 		
 		// send to form page		
-		return "/update-user";
+		return "user/update-user";
 	}
 	
 	@PostMapping("/saveUser")
