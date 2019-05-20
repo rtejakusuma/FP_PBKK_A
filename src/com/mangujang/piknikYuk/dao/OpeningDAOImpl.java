@@ -27,17 +27,20 @@ public class OpeningDAOImpl implements OpeningDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		//create a query		
-		Query selectAll = currentSession.createSQLQuery("select * from opening_hours where tour_location_id =:id")
+//		Query selectAll = currentSession.createSQLQuery("select * from opening_hours where tour_location_id =:id")
+//				.setParameter("id", id);
+		
+		Query selectAll = currentSession.createQuery("from OpeningHour where tourLocation.id = :id")
 				.setParameter("id", id);
 		
 		//get query result
-		List<OpeningHour> opening = selectAll.getResultList();
+		List<OpeningHour> opening = selectAll.list();
 						
 		return opening;
 	}
 
 	@Override
-	public void saveOpening(OpeningHour theOpening, int tourId) {
+	public void saveOpening(OpeningHour theOpening, int tourId, int flag) {
 		//get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
@@ -45,8 +48,11 @@ public class OpeningDAOImpl implements OpeningDAO {
 		
 		tempTour.add(theOpening);
 		
-		//save/update the discout
-		currentSession.saveOrUpdate(theOpening);
+		if(flag == 0) {
+			currentSession.save(theOpening);
+		} else if(flag == 1) {
+			currentSession.saveOrUpdate(theOpening);
+		}
 	}
 
 	@Override
@@ -61,6 +67,7 @@ public class OpeningDAOImpl implements OpeningDAO {
 		return theOpening;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void deleteOpening(int id) {
 		// TODO Auto-generated method stub
@@ -72,6 +79,20 @@ public class OpeningDAOImpl implements OpeningDAO {
 		theQuery.setParameter("openingId", id);
 		
 		theQuery.executeUpdate();
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public OpeningHour getIndex() {
+		// TODO Auto-generated method stub
+		//get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query query = currentSession.createQuery("from OpeningHour order by id DESC");
+		query.setMaxResults(1);
+		OpeningHour last = (OpeningHour) query.uniqueResult();
+		
+		return last;
 	}
 
 }
