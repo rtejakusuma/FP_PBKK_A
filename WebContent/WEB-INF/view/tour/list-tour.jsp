@@ -15,8 +15,7 @@
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/all.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep1.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/wisatauser/header.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/discount/load1.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/discount/header.css" rel="stylesheet" type="text/css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 	 <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
 	 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
@@ -61,8 +60,10 @@
 			         <div class="card flex-md-row mb-4 h-md-250">
 			            <div class="card-body d-flex flex-column align-items-start">
 			               <strong class="d-inline-block mb-2 text-primary" href="">${tour.name}</strong>
+			               <strong>Harga Weekday : Rp ${tour.weekdayPrice}</strong>
+			               <strong>Harga Weekend : Rp ${tour.weekendPrice}</strong>
 			               <h6 class="mb-0">
-			                  <strong class="text-dark">Pengunjung : ${tour.capacity}</strong>
+			                  <strong class="text-dark">Kapasitas : ${tour.capacity}</strong>
 			               </h6>
 			               <!--<div class="mb-1 text-muted small">Nov 12</div>-->
 			               <p class="card-text mb-auto">${tour.description}</p>
@@ -90,6 +91,9 @@
 								<th scope="col">Nama</th>
 								<th scope="col">Dekripsi</th>
 								<th scope="col">Lokasi</th>	
+								<th scope="col">Kapasitas</th>
+								<th scope="col">Harga Weekday</th>
+								<th scope="col">Harga Weekend</th>
 								<th scope="col">Aksi</th>					
 							</tr>
 						</thead>
@@ -102,7 +106,7 @@
 							<c:url var="deleteLink" value="/tour/delete"></c:url>
 							
 							<!-- set open hour url  -->
-							<c:url var="openHour" value="/tour/open-addForm">
+							<c:url var="openHour" value="/tour/open-list">
 								<c:param name="id" value="${tour.id}" />
 							</c:url>
 							
@@ -112,6 +116,9 @@
 									<td style="width: 15%">${tour.name}</td>
 									<td style="width: 15%">${tour.description}</td>
 									<td style="width: 15%">${tour.location}</td>
+									<td style="width: 15%">${tour.capacity}</td>
+									<td style="width: 15%">${tour.weekdayPrice}</td>
+									<td style="width: 15%">${tour.weekendPrice}</td>
 									<td>
 										<a title='Update tour' href="${updateLink}">
 											<button class="btn btn-primary">Ubah</button>
