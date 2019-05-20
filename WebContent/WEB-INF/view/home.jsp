@@ -46,8 +46,6 @@
         <ul>
             <li><a href="${pageContext.request.contextPath}/tour/list">Obyek Wisata</a></li>
             <li><a href="${pageContext.request.contextPath}/discount/list">Promo</a></li>
-            <li><a class="js-scroll-trigger" href="#about">About</a></li>
-            <li><a class="js-scroll-trigger" href="#contact">Contact</a></li>
             <div style="float:right;">
 	            <li><a href="${pageContext.request.contextPath}/login">Masuk</a></li>
 	            <li><a href="${pageContext.request.contextPath}/user/addUserForm">Daftar</a></li>
@@ -61,8 +59,6 @@
             <li><a href="${pageContext.request.contextPath}/tour/list">Obyek Wisata</a></li>
             <li><a href="${pageContext.request.contextPath}/discount/list">Promo</a></li>
             <li><a href="${pageContext.request.contextPath}/user/list">Users</a></li>
-            <li><a class="js-scroll-trigger" href="#about">About</a></li>
-            <li><a class="js-scroll-trigger" href="#contact">Contact</a></li>
             <div style="float:right;">
 	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
             </div>
@@ -74,8 +70,7 @@
         <ul>
             <li><a href="${pageContext.request.contextPath}/tour/list">Obyek Wisata</a></li>
             <li><a href="${pageContext.request.contextPath}/discount/list">Promo</a></li>
-            <li><a class="js-scroll-trigger" href="#about">About</a></li>
-            <li><a class="js-scroll-trigger" href="#contact">Contact</a></li>
+
             <div style="float:right;">
 	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
             </div>

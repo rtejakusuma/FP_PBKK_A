@@ -17,19 +17,35 @@
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/wisatauser/header.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/discount/load1.css" rel="stylesheet">
-</head>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	 <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+	 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+	</head>
 
 <body>
-	<div class="menulist">
+	<c:if test="${role == 0 }">
+<div class="menulist">
       <ul>
-          <li><a href="">Obyek Wisata</a></li>
+          <li><a href="../tour/list">Obyek Wisata</a></li>
           <li><a class="pindah1" href="../discount/list">Promo</a></li>
-          <li><a class="pindah1" href="Status/status.html">Status</a></li>
           <div style="float:right;">
 	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
             </div>
       </ul>
   </div>
+</c:if>
+<c:if test="${role == 1 }">
+<div class="menulist">
+      <ul>
+          <li><a href="../tour/list">Obyek Wisata</a></li>
+          <li><a class="pindah1" href="../discount/list">Promo</a></li>
+          <li><a class="pindah1" href="../user/list">User</a></li>
+          <div style="float:right;">
+	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
+            </div>
+      </ul>
+  </div>
+</c:if>
 	
 	<section id="team" class="pb-7">
 		<div class="container">

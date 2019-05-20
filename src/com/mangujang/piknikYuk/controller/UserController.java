@@ -81,33 +81,33 @@ public class UserController {
 			return "redirect:/user/addUserForm";
 		}
 		
-		// password hashing
-		MessageDigest digest;
-		try {
-			// Static getInstance method is called with hashing SHA 
-			digest = MessageDigest.getInstance("SHA-256");
-			
-			// digest() method called 
-            // to calculate message digest of an input 
-            // and return array of byte 
-			byte[] hash = digest.digest(theUser.getPassword().getBytes(StandardCharsets.UTF_8));
-
-			// Convert byte array into signum representation 
-            BigInteger no = new BigInteger(1, hash); 
-  
-            // Convert message digest into hex value 
-            String hashtext = no.toString(16); 
-  
-            while (hashtext.length() < 32) { 
-                hashtext = "0" + hashtext; 
-            } 
-            
-            theUser.setPassword(hashtext);
-            
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// password hashing
+//		MessageDigest digest;
+//		try {
+//			// Static getInstance method is called with hashing SHA 
+//			digest = MessageDigest.getInstance("SHA-256");
+//			
+//			// digest() method called 
+//            // to calculate message digest of an input 
+//            // and return array of byte 
+//			byte[] hash = digest.digest(theUser.getPassword().getBytes(StandardCharsets.UTF_8));
+//
+//			// Convert byte array into signum representation 
+//            BigInteger no = new BigInteger(1, hash); 
+//  
+//            // Convert message digest into hex value 
+//            String hashtext = no.toString(16); 
+//  
+//            while (hashtext.length() < 32) { 
+//                hashtext = "0" + hashtext; 
+//            } 
+//            
+//            theUser.setPassword(hashtext);
+//            
+//		} catch (NoSuchAlgorithmException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		// check dupes
 		boolean anyDupes = userService.checkDuplicates(theUser.getUsername(), theUser.getEmail());
@@ -115,7 +115,7 @@ public class UserController {
 		if(!anyDupes) {
 			//save the customer using our service
 			userService.saveUser(theUser);
-			return "redirect:/user/list";
+			return "home";
 		}
 		else {
 			theModel.addFlashAttribute("error", "Nama pengguna atau "

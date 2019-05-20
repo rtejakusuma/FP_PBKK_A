@@ -7,19 +7,35 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="${pageContext.request.contextPath}/resources/discount/load1.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/discount/header.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+ <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+ <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 	
 </head>
-
+<body>
+<c:if test="${role == 0 }">
 <div class="menulist">
       <ul>
           <li><a href="../tour/list">Obyek Wisata</a></li>
           <li><a class="pindah1" href="">Promo</a></li>
-          <li><a class="pindah1" href="Status/status.html">Status</a></li>
           <div style="float:right;">
 	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
             </div>
       </ul>
   </div>
+</c:if>
+<c:if test="${role == 1 }">
+<div class="menulist">
+      <ul>
+          <li><a href="../tour/list">Obyek Wisata</a></li>
+          <li><a class="pindah1" href="">Promo</a></li>
+          <li><a class="pindah1" href="../user/list">User</a></li>
+          <div style="float:right;">
+	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
+            </div>
+      </ul>
+  </div>
+</c:if>
 <!-- Team -->
 <section id="team" class="pb-7">
     <div class="container">
@@ -119,4 +135,25 @@
         </div>
     </div>
 </section>
-<!-- Team -->
+</body>
+<script>
+	function confirm(id){
+		swal.fire({
+			title: 'Yakin ingin menghapus data promo?',
+			text: "Data yang dihapus tidak dapat kembali",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yakin, hapus data',
+			cancelButtonText: 'Tidak, kembali',
+			allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false
+		}).then((result) => {
+			if(result.value) {
+		  		window.location.href = "${deleteLink}?discountId="+id; 		
+			}
+		});
+	}
+</script>

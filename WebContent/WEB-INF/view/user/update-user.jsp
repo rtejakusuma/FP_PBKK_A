@@ -9,11 +9,38 @@
 	<meta charset="ISO-8859-1">
 	<title>Form Input</title>
 	
-	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/font_rametto.css" />" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"  rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/style.css"  rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/font_rametto.css"  rel="stylesheet">
+	
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">	
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/wisatauser/all.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep1.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/wisatauser/mantep.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/wisatauser/header.css" rel="stylesheet" type="text/css">	
+	
 </head>
 <body>
+<div class="menulist">
+      <ul>
+          <li><a href="../tour/list">Obyek Wisata</a></li>
+          <li><a class="pindah1" href="../discount/list">Promo</a></li>
+          <li><a class="pindah1" href="../user/list">User</a></li>
+          <div style="float:right;">
+	            <li><a href="${pageContext.request.contextPath}/logout">Keluar</a></li>
+            </div>
+      </ul>
+  </div>
+<!-- Team -->
+<section id="team" class="pb-7">
+    <div class="container">
 	<div class="center-items">
 		<h1>Update Data Pengguna</h1>
 		<br>
@@ -46,12 +73,12 @@
 	    		<div class="form-group row">
 				    <div class="col-sm-10">
 				      <button type="submit" class="btn btn-primary">Kirim</button>
-				      <button class="btn btn-secondary"><a href="${pageContext.request.contextPath}/user/list">Kembali</a></button>
 				    </div>
 			    </div>
 			</form:form>
-			<div></div>
 		</div>
 	</div>
+	</div>
+	</section>
 </body>
 </html>
