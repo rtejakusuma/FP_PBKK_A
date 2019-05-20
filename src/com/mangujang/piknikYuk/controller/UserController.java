@@ -54,8 +54,12 @@ public class UserController {
 	@GetMapping("/updateUserForm")
 	public String updateUser(
 			@RequestParam("userId") int theId, 
-			Model theModel
-			) {		
+			Model theModel,
+			HttpSession httpSession
+			) {	
+		if(httpSession.getAttribute("role") == null || (int)httpSession.getAttribute("role") == 0) {
+			return "redirect:checkHome";
+		}
 		// get user data from db
 		User theUser = userService.getUser(theId);
 		
@@ -63,7 +67,7 @@ public class UserController {
 		theModel.addAttribute("user", theUser);
 		
 		// send to form page		
-		return "user/update-user";
+		return "/update-user";
 	}
 	
 	@PostMapping("/saveUser")
@@ -166,11 +170,17 @@ public class UserController {
 		User username = (User) httpSession.getAttribute("user");
 		//System.out.println(result.getRole());
 		System.out.println(username);
-		if(username.getRole() == 0) {
+		if(httpSession.getAttribute("user") == null) {
+			model.addAttribute("error", "login terlebih dahulu");
+			return "user/login-user";
+		}
+		else if(username.getRole() == 0) {
+			httpSession.setAttribute("role", username.getRole());
 			model.addAttribute("role", username.getRole());
 			return "home";
 		}
 		else if(username.getRole() == 1) {
+			httpSession.setAttribute("role", username.getRole());
 			model.addAttribute("role", username.getRole());
 			return "home";
 		}

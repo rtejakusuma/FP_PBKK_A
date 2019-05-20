@@ -46,6 +46,7 @@ public class HomeController {
 	public String logout(HttpSession httpSession, Model model) {
 		if(httpSession.getAttribute("user") != null) {
 			httpSession.setAttribute("user", null);
+			httpSession.setAttribute("role", null);
 		}
 		
 		return "redirect:home";
